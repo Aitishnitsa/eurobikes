@@ -55,6 +55,30 @@ form {
     opacity: .9;
 }
 
+.header-articles {
+    background-image: url(https://cdn.shopify.com/s/files/1/0250/6460/3682/products/BirdBike3_2.jpg?v=1654549266);
+}
+
+.header-articles::after {
+    opacity: .9;
+}
+
+.header-delivery {
+    background-image: url(https://cdn.shopify.com/s/files/1/0565/3141/9342/t/10/assets/mountain-1634571681091.png?v=1634571688);
+}
+
+.header-delivery::after {
+    opacity: .9;
+}
+
+.header-service {
+    background-image: url(https://cdn.outsideonline.com/wp-content/uploads/2022/12/DSC04816-Edit1.jpg);
+}
+
+.header-service::after {
+    opacity: .9;
+}
+
 .navigation {
     justify-content: space-between;
     display: flex;
@@ -204,7 +228,7 @@ form {
     float: right;
 }
 
-.location {
+.left {
     float: left;
 }
 
