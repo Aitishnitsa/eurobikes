@@ -51,31 +51,27 @@ form {
   background-image: url(https://ecf.com/sites/ecf.com/files/field/image/Brussels%20car%20free%20day.JPEG.png);
 }
 
-.header-contacts::after {
-  opacity: 0.9;
-}
-
 .header-articles {
   background-image: url(https://cdn.shopify.com/s/files/1/0250/6460/3682/products/BirdBike3_2.jpg?v=1654549266);
-}
-
-.header-articles::after {
-  opacity: 0.9;
 }
 
 .header-delivery {
   background-image: url(https://cdn.shopify.com/s/files/1/0565/3141/9342/t/10/assets/mountain-1634571681091.png?v=1634571688);
 }
 
-.header-delivery::after {
-  opacity: 0.9;
-}
-
 .header-service {
   background-image: url(https://cdn.outsideonline.com/wp-content/uploads/2022/12/DSC04816-Edit1.jpg);
 }
 
-.header-service::after {
+.header-reviews {
+  background-image: url(https://www.huntinggeardeals.com/wp-content/uploads/2021/05/best-ebike-for-hunting-quietkat-jeep-e1622602143117-1024x516.jpeg);
+}
+
+.header-contacts::after, 
+.header-articles::after, 
+.header-delivery::after, 
+.header-service::after, 
+.header-reviews::after {
   opacity: 0.9;
 }
 
@@ -548,13 +544,11 @@ textarea.form-input {
   background-color: #51804ecc;
 }
 
-/* The dropdown container */
 .dropdown {
   float: left;
   overflow: hidden;
 }
 
-/* Dropdown button */
 .dropdown .dropbtn {
   font-size: 16px;
   border: none;
@@ -564,12 +558,9 @@ textarea.form-input {
   background-color: inherit;
   font-family: inherit;
   font-weight: 800;
-  /* Important for vertical align on mobile phones */
   margin: 0;
-  /* Important for vertical align on mobile phones */
 }
 
-/* Dropdown content (hidden by default) */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -581,7 +572,6 @@ textarea.form-input {
   transform: translateX(-50%);
 }
 
-/* Links inside the dropdown */
 .dropdown-content a {
   float: none;
   color: black;
@@ -591,64 +581,18 @@ textarea.form-input {
   text-align: left;
 }
 
-/* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
   background-color: #ddd;
 }
 
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
 .add-review {
-  border: 1px solid white;
-  margin: 20px auto;
-  padding: 30px;
-  width: 400px;
-}
-
-.add-review h2 {
-  color: lightblue;
-}
-
-.add-review__form {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-}
-
-.add-review__form div {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-}
-
-.add-review__form label {
-  color: white;
-}
-
-.add-review__form button {
-  background-color: inherit;
-  border: 1px solid white;
-  padding: 10px;
-  color: white;
-  cursor: pointer;
-  align-self: center;
-  width: 100%;
-}
-
-.add-review__form input,
-.add-review__form textarea {
-  background-color: inherit;
-  border: 1px solid white;
-  outline: none;
-  padding: 5px;
-  color: white;
+  background-color: #51804e21;
+  padding: 20px;
+  border-radius: 5px;
 }
 
 .reviews {
@@ -657,7 +601,7 @@ textarea.form-input {
   align-items: center;
   flex-direction: row;
   gap: 10px;
-  border: 1px solid white;
+  border: 1px solid #51804e;
   margin: 20px;
   padding: 30px;
   overflow-y: auto;
@@ -665,14 +609,14 @@ textarea.form-input {
 }
 
 .review {
-  border: 1px solid white;
+  border: 1px solid #51804e;
   padding: 10px;
   min-width: 200px;
-  color: white;
+  color: #51804e;
 }
 
 .review-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
+} 
