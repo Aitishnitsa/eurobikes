@@ -8,39 +8,44 @@ const addReviewButton = document.getElementById("add-review");
 const reviewsDiv = document.getElementById("reviews");
 
 const handleGetReviews = () => {
-  let xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      let reviews = JSON.parse(this.responseText);
-      let div = `<div>				
-				 </div>`;
-
+  fetch(API_URL)
+    .then(response => response.json())
+    .then(reviews => {
+      let div = "";
       for (let review of reviews) {
         div += `<div class="review"> 
-		  <p>Name: ${review.name} </p>
-		  <p>Desciption: ${review.description}</p>
-		  <p>Grade: ${review.grade}</p>   
-		  </div>`;
+          <p>Name: ${review.name} </p>
+          <p>Desciption: ${review.description}</p>
+          <p>Grade: ${review.grade}</p>   
+        </div>`;
       }
       reviewsDiv.innerHTML = div;
-    }
-  };
-  xhttp.open("GET", API_URL, true);
-  xhttp.send();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 };
 
 const handlePostReview = () => {
-  let post = JSON.stringify(review);
-  const url = API_URL;
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", url, true);
-  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-  xhr.send(post);
-  xhr.onload = function () {
-    if (xhr.status === 201) {
-      console.log("Post successfully created!");
-    }
-  };
+  fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(review)
+  })
+    .then(response => {
+      if (response.status === 201) {
+        console.log("Post successfully created!");
+        // Оновити список відгуків після успішного додавання нового відгуку
+        // handleGetReviews();
+        handleGetAllReviews()
+        handleShowReviews();
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 };
 
 const handleCreateReview = () => {
@@ -66,8 +71,5 @@ document.getElementById("datetime").innerHTML =
   "/" +
   dt.getFullYear();
 
-addReviewButton.addEventListener("click", () => {
-  handleCreateReview();
-  handleGetReviews();
-});
+addReviewButton.addEventListener("click", handleCreateReview);
 handleGetReviews();
