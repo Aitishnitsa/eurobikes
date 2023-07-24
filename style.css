@@ -316,6 +316,7 @@ form {
 }
 
 .breweries>ul {
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 1rem;
@@ -605,6 +606,21 @@ textarea.form-input {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+@media only screen and (max-width: 525px) {
+  .breweries>ul {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .logo img {
+    height: 50px;
+    margin: 0;
+  }
+
+  .welcome {
+    margin: auto 25px;
+  }
 }
 
 /* Extra small devices (phones, 600px and down) */
