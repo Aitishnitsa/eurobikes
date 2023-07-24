@@ -67,10 +67,10 @@ form {
   background-image: url(https://www.huntinggeardeals.com/wp-content/uploads/2021/05/best-ebike-for-hunting-quietkat-jeep-e1622602143117-1024x516.jpeg);
 }
 
-.header-contacts::after, 
-.header-articles::after, 
-.header-delivery::after, 
-.header-service::after, 
+.header-contacts::after,
+.header-articles::after,
+.header-delivery::after,
+.header-service::after,
 .header-reviews::after {
   opacity: 0.9;
 }
@@ -96,7 +96,6 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 270px 0 0;
 }
 
 .search-image {
@@ -119,10 +118,7 @@ form {
   background-color: white;
   height: 30%;
   outline: 0;
-  padding-inline-end: calc(
-    var(--ntp-realbox-voice-icon-offset) + var(--ntp-realbox-icon-width) +
-      var(--ntp-realbox-inner-icon-margin)
-  );
+  padding-inline-end: calc(var(--ntp-realbox-voice-icon-offset) + var(--ntp-realbox-icon-width) + var(--ntp-realbox-inner-icon-margin));
   padding-inline-start: 15px;
   position: relative;
   border: none;
@@ -197,16 +193,6 @@ form {
   color: white;
   position: relative;
   z-index: 1;
-}
-
-@media screen and (max-width: 960px) {
-  .nav-list {
-    display: none;
-  }
-
-  .nav-toggle {
-    display: block;
-  }
 }
 
 .welcome {
@@ -329,18 +315,18 @@ form {
   color: #fff;
 }
 
-.breweries > ul {
+.breweries>ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 1rem;
 }
 
-.breweries > ul > li {
+.breweries>ul>li {
   border: 1px solid #e2e2e2;
   border-radius: 0.5rem;
 }
 
-.breweries > ul > li > figure {
+.breweries>ul>li>figure {
   max-height: 220px;
   overflow: hidden;
   border-top-left-radius: 0.5rem;
@@ -348,31 +334,31 @@ form {
   position: relative;
 }
 
-.breweries > ul > li > figure > img {
+.breweries>ul>li>figure>img {
   width: 100%;
 }
 
-.breweries > ul > li > figure > figcaption {
+.breweries>ul>li>figure>figcaption {
   position: absolute;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
 }
 
-.breweries > ul > li > figure > figcaption > h3 {
+.breweries>ul>li>figure>figcaption>h3 {
   color: white;
   padding: 0.75rem;
   font-size: 1.25rem;
 }
 
-.breweries > ul > li > p {
+.breweries>ul>li>p {
   font-size: 1rem;
   line-height: 1.5;
   padding: 1rem 0.75rem;
   color: #fff;
 }
 
-.breweries > ul > li > a {
+.breweries>ul>li>a {
   padding: 0.5rem 1rem;
   margin: 0.5rem;
   background-color: #51804e;
@@ -383,7 +369,7 @@ form {
   display: inline-block;
 }
 
-.breweries > ul > li > a:hover {
+.breweries>ul>li>a:hover {
   opacity: 0.5;
   transition: all 0.25s ease;
 }
@@ -619,4 +605,62 @@ textarea.form-input {
   display: flex;
   flex-direction: column;
   gap: 10px;
-} 
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .search-input {
+    display: none;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and down) */
+@media only screen and (max-width: 768px) {
+  .row-fluid {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 0px 20px 20px 20px;
+  }
+
+  .middle-info {
+    width: 100%;
+    padding-left: 0px;
+    border-left: none;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .sidebar-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .sidebar-header, .shop-menu {
+    border-bottom: none;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
+
+/* Large devices (laptops/desktops, 992px and down) */
+@media only screen and (max-width: 992px) {
+  .nav-list {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1200px) {}
