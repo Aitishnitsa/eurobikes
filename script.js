@@ -37,8 +37,6 @@ const handlePostReview = () => {
     .then(response => {
       if (response.status === 201) {
         console.log("Post successfully created!");
-        // Оновити список відгуків після успішного додавання нового відгуку
-        // handleGetReviews();
         handleGetAllReviews()
         handleShowReviews();
       }
