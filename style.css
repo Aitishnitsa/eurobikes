@@ -694,18 +694,60 @@ textarea.form-input {
 
 }
 
+.mobile-menu {
+  display: none;
+  position: sticky;
+  top: 0;
+  left: 0;
+  flex-flow: column;
+  padding: 10px;
+  color: white;
+  background-color: black;
+  width: 200px;
+  height: 100vh;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.mobile-menu.opened {
+  display: flex;
+}
+
 /* Large devices (laptops/desktops, 992px and down) */
 @media only screen and (max-width: 992px) {
   .nav-list {
     display: none;
   }
 
+  .nav-list-top {
+    position: fixed;
+    flex-flow: column;
+    top: 0;
+    left: 0;
+    background: black;
+    display: block;
+    height: 100vh;
+  }
+
+  .nav-list-top .nav-links {
+    width: 100%;
+  }
+
   .nav-toggle {
     display: block;
+    order: 1;
+  }
+
+  .search {
+    order: 2;
   }
 
   .row-info {
     padding: 20px;
+  }
+
+  .main-image {
+    display: none;
   }
 }
 
