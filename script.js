@@ -112,3 +112,17 @@ navToggleButton.addEventListener('click', ($event) => menuOpen($event));
 // }
 
 // document.addEventListener('click', ($event) => outsideClickMenuClose($event));
+
+// const showArticleButton = document.querySelector('.show-article');
+
+const article = document.querySelector('.article');
+
+const showArticle = () => {
+  if (!article) { return; }
+  article.classList.remove('hidden');
+}
+
+const hideArticle = () => {
+  if (!article) { return; }
+  article.classList.add('hidden');
+}

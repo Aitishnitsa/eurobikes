@@ -364,7 +364,8 @@ form {
   color: #fff;
 }
 
-.breweries>ul>li>a {
+.breweries>ul>li>a, 
+.close-button>a {
   padding: 0.5rem 1rem;
   margin: 0.5rem;
   background-color: #51804e;
@@ -375,7 +376,8 @@ form {
   display: inline-block;
 }
 
-.breweries>ul>li>a:hover {
+.breweries>ul>li>a:hover, 
+.close-button>a:hover {
   opacity: 0.5;
   transition: all 0.25s ease;
 }
@@ -617,6 +619,56 @@ textarea.form-input {
   gap: 10px;
 }
 
+.article.hidden {
+  display: none;
+}
+
+.article-background {
+  background-color: #2e452c;
+  padding: 40px;
+  margin: 10px;
+}
+
+.article-content {
+  background-color: white;
+  padding: 40px;
+}
+
+.article-header, .article-header>div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.article-header>div>h4 {
+  padding: 0 10px 0 0px;
+}
+
+.article-text {
+  padding: 15px 0;
+}
+
+.text-paragraph {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+}
+
+.text-paragraph>p, .article-text>h3, .article-header>h1 {
+  padding: 0 0 0 20px;
+}
+
+.close-button>a {
+  width: 54px;
+  margin: 0;
+}
+
+.close-button {
+  display: flex;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 525px) {
   .breweries>ul {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -634,6 +686,14 @@ textarea.form-input {
   .item p {
     font-size: 16px;
   }
+
+  .article-content {
+    padding: 20px;
+  }
+
+  .article-background {
+    margin: 0;
+  } 
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -646,6 +706,18 @@ textarea.form-input {
     padding: 0 10px;
   }
 
+  .article-header {
+    flex-direction: column;
+  }
+
+  .text-paragraph {
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  .text-paragraph>p {
+    padding: 0;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and down) */
@@ -692,6 +764,13 @@ textarea.form-input {
     width: 200px;
   }
 
+  .article-background {
+    padding: 15px;
+  }
+
+  .text-paragraph>img {
+    width: 200px;
+  }
 }
 
 .mobile-menu {
