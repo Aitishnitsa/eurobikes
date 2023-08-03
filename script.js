@@ -75,6 +75,11 @@
 const navToggleButton = document.querySelector('.nav-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
 const svgPath = document.getElementById("svg-path");
+const article1 = document.getElementById('article-1');
+const article2 = document.getElementById('article-2');
+const article3 = document.getElementById('article-3');
+
+const articleArray = [article1, article2, article3];
 
 let isMenuOpen = false;
 
@@ -113,16 +118,18 @@ navToggleButton.addEventListener('click', ($event) => menuOpen($event));
 
 // document.addEventListener('click', ($event) => outsideClickMenuClose($event));
 
-// const showArticleButton = document.querySelector('.show-article');
-
-const article = document.querySelector('.article');
-
-const showArticle = () => {
-  if (!article) { return; }
-  article.classList.remove('hidden');
-}
+const showArticle = (event) => {
+  const readMoreButton = event.target;
+  const hrefValue = readMoreButton.getAttribute('href');
+  
+  const targetArticle = document.querySelector(hrefValue);
+  if (targetArticle) {
+    targetArticle.classList.remove('hidden');
+  }
+};
 
 const hideArticle = () => {
-  if (!article) { return; }
-  article.classList.add('hidden');
+  for (let i = 0; i < articleArray.length; i++) {
+    articleArray[i].classList.add('hidden');
+  }
 }
