@@ -25,7 +25,6 @@ form {
 }
 
 .header {
-  background-image: url(https://cdn.shopify.com/s/files/1/0940/6140/files/2023_Trek_Fuel_Ex_E_Dane_Perras_cover.original_1600x.jpg?v=1658535803);
   height: calc(100vh - 40px);
   background-size: cover;
   background-position: 50%;
@@ -45,6 +44,10 @@ form {
   height: 100%;
   width: 100%;
   transition: all 0.25s ease;
+}
+
+.header-main {
+  background-image: url(https://cdn.shopify.com/s/files/1/0940/6140/files/2023_Trek_Fuel_Ex_E_Dane_Perras_cover.original_1600x.jpg?v=1658535803);
 }
 
 .header-contacts {
@@ -112,19 +115,24 @@ form {
   font-size: 16px;
   outline: none;
   width: 100%;
+  height: 30%;
 }
 
-.search-input {
-  background-color: white;
-  height: 30%;
-  outline: 0;
-  padding-inline-end: calc(var(--ntp-realbox-voice-icon-offset) + var(--ntp-realbox-icon-width) + var(--ntp-realbox-inner-icon-margin));
-  padding-inline-start: 15px;
-  position: relative;
-  border: none;
-  border-radius: 20px;
-  font-size: 16px;
-  width: 100%;
+.header-menu {
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-nav {
+  padding: 20px;
+}
+
+.header-menu.fixed {
+  position: fixed;
+  width: 88%;
 }
 
 .nav-list li:last-of-type a {
@@ -619,9 +627,9 @@ textarea.form-input {
   gap: 10px;
 }
 
-.article.hidden {
+/* .article.hidden {
   display: none;
-}
+} */
 
 .article-background {
   background-color: #2e452c;
@@ -689,6 +697,71 @@ th, td {
   text-align: center;
 }
 
+.rating {
+  display: inline-block;
+  position: relative;
+  line-height: 36px;
+  font-size: 36px;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label .icon {
+  float: left;
+  color: transparent;
+}
+
+.rating label:last-child .icon {
+  color: #d5d5d5;
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+  color: #ffd000;
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+  color: #d5d5d5;
+  text-shadow: 0 0 5px #ffd000;
+}
+
 @media only screen and (max-width: 525px) {
   .breweries>ul {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -720,6 +793,10 @@ th, td {
 @media only screen and (max-width: 600px) {
   .search-input {
     display: none;
+  }
+
+  .search-input.opened {
+    display: inline;
   }
 
   .row-info {
@@ -874,6 +951,10 @@ th, td {
 
   .main-image {
     display: none;
+  }
+
+  .header-menu {
+    width: 100%;
   }
 }
 
