@@ -465,10 +465,6 @@ footer {
   padding: 0 4px 0 0;
 }
 
-/* .col {
-  width: 50em;
-} */
-
 .contact-form {
   border: 1px solid #d6dcdb;
   margin-top: -1px;
@@ -595,7 +591,7 @@ textarea.form-input {
   display: block;
 }
 
-.add-review {
+.add-review, .order-form {
   background-color: #51804e21;
   padding: 20px;
   border-radius: 5px;
@@ -626,10 +622,6 @@ textarea.form-input {
   flex-direction: column;
   gap: 10px;
 }
-
-/* .article.hidden {
-  display: none;
-} */
 
 .article-background {
   background-color: #2e452c;
@@ -688,12 +680,12 @@ textarea.form-input {
 table, th, td {
   padding: 0;
   margin: 0;
-  border: 1px dotted #2e452c;
   border-spacing: 0;
 }
 
 th, td {
-  padding: 5px;
+  /* border: 1px dotted #2e452c; */
+  padding: 10px;
   text-align: center;
 }
 
@@ -762,6 +754,50 @@ th, td {
   text-shadow: 0 0 5px #ffd000;
 }
 
+.cart-table {
+  padding: 10px 0px;
+}
+
+.cart-table>table {
+  border: 1px solid #51804e;
+  width: 100%;
+}
+
+.cart-table>table:last-of-type {
+  border-top: none;
+}
+
+.table-element>td, .table-element>th {
+  border-bottom: 1px solid #51804e;
+}
+
+.table-element>td:nth-of-type(2) {
+  text-align: left;
+  max-width: 512px;
+}
+
+.promo-input {
+  border: 1px solid #51804e;
+  padding: 4px;
+  border-radius: 20px;
+  outline: none;
+  max-width: 100px;
+}
+
+.form-actions>button {
+  margin-top: 20px;
+}
+
+.form-actions>button:first-of-type {
+  background-color: #51804e94;
+  margin-right: 14px;
+}
+
+.radiobuttons-group {
+  display: flex;
+  flex-direction: column;
+}
+
 @media only screen and (max-width: 525px) {
   .breweries>ul {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -787,6 +823,11 @@ th, td {
   .article-background {
     margin: 0;
   } 
+
+  #content {
+    padding: 0;
+  }
+  
 }
 
 /* Extra small devices (phones, 600px and down) */

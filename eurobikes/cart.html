@@ -15,14 +15,13 @@
 </head>
 
 <body>
-    <header class="header header-articles">
+    <header class="header-nav">
         <div class="mobile-menu">
             <ul class="nav-list-top">
                 <li class="nav-links">
                     <a href="../index.html">Головна</a>
                 </li>
                 <li class="nav-links">
-                    <!-- <a href="#">Категорії</a> -->
                     <div class="dropdown">
                         <button class="dropbtn">Категорії
                             <i class="fa fa-caret-down"></i>
@@ -51,7 +50,7 @@
                     <a href="./reviews.html">Відгуки</a>
                 </li>
                 <li class="nav-links">
-                    <a href="./cart.html">Кошик</a>
+                    <a href="./reviews.html">Корзина</a>
                 </li>
                 <li class="nav-links">
                     <a href="https://www.instagram.com/eurobikes_com_ua/">
@@ -76,13 +75,20 @@
             </div>
             <div class="header-menu">
                 <div class="nav-toggle">
-                    <svg id="my-svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-lines">
-                        <path id="svg-path" fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" class=""></path>
+                    <svg id="my-svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-lines">
+                        <path id="svg-path" fill="currentColor"
+                            d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                            class=""></path>
                     </svg>
                 </div>
                 <div class="search">
                     <div class="search-image" onclick="showSearchBar(event)">
-                        <svg style="color: white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m19.6 21l-6.3-6.3q-.75.6-1.725.95Q10.6 16 9.5 16q-2.725 0-4.612-1.887Q3 12.225 3 9.5q0-2.725 1.888-4.613Q6.775 3 9.5 3t4.613 1.887Q16 6.775 16 9.5q0 1.1-.35 2.075q-.35.975-.95 1.725l6.3 6.3ZM9.5 14q1.875 0 3.188-1.312Q14 11.375 14 9.5q0-1.875-1.312-3.188Q11.375 5 9.5 5Q7.625 5 6.312 6.312Q5 7.625 5 9.5q0 1.875 1.312 3.188Q7.625 14 9.5 14Z"/></svg>
+                        <svg style="color: white" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="m19.6 21l-6.3-6.3q-.75.6-1.725.95Q10.6 16 9.5 16q-2.725 0-4.612-1.887Q3 12.225 3 9.5q0-2.725 1.888-4.613Q6.775 3 9.5 3t4.613 1.887Q16 6.775 16 9.5q0 1.1-.35 2.075q-.35.975-.95 1.725l6.3 6.3ZM9.5 14q1.875 0 3.188-1.312Q14 11.375 14 9.5q0-1.875-1.312-3.188Q11.375 5 9.5 5Q7.625 5 6.312 6.312Q5 7.625 5 9.5q0 1.875 1.312 3.188Q7.625 14 9.5 14Z" />
+                        </svg>
                     </div>
                     <input class="search-input" type="text" placeholder="Пошук">
                 </div>
@@ -108,7 +114,7 @@
                     </div>
                 </li>
                 <li class="nav-links">
-                    <a href="#">Статті</a>
+                    <a href="./articles.html">Статті</a>
                 </li>
                 <li class="nav-links">
                     <a href="./delivery.html">Доставка та оплата</a>
@@ -120,7 +126,7 @@
                     <a href="./reviews.html">Відгуки</a>
                 </li>
                 <li class="nav-links">
-                    <a href="./cart.html">
+                    <a href="">
                         <div class="insta-img">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-cart" viewBox="0 0 16 16">
@@ -145,64 +151,134 @@
                 </li>
             </ul>
         </nav>
-        <div class="contacts">
-            <div class="title">
-                <h1>Корисні статті</h1>
-            </div>
-            <div class="link left">
-                <a href="#breweries">Дізнатися більше →</a>
-            </div>
-        </div>
     </header>
-    <section class="breweries" id="breweries">
-        <div class="page-header2">
-            <h2>Статті</h2>
-        </div>
-        <ul>
-            <li>
-                <figure>
-                    <img src="https://github.com/Aitishnitsa/eurobikes/blob/main/images/article1.jpg?raw=true"
-                        alt="man with bike">
-                    <figcaption>
-                        <h3>Як обрати велосипед?</h3>
-                    </figcaption>
-                </figure>
-                <p>
-                    Надійний транспорт - це транспорт, підібраний у суворій відповідності до параметрів власника та для
-                    його потреб. Одне з найулюбленіших занять дитинства – катання на велосипеді...
-                </p>
-                <a href="./how-to-choose-a-bike.html">Читати...</a>
-            </li>
-            <li>
-                <figure>
-                    <img src="https://github.com/Aitishnitsa/eurobikes/blob/main/images/article2.jpg?raw=true"
-                        alt="bike">
-                    <figcaption>
-                        <h3>Велосипедні рами. Який матеріал краще?</h3>
-                    </figcaption>
-                </figure>
-                <p>
-                    Рама – один із основних елементів у конструкції велосипеда. Саме вона приймає на себе більшу частину
-                    навантаження при фронтальних та бічних ударах, утримує велосипед від скручування...
-                </p>
-                <a href="./bike-frames.html">Читати...</a>
-            </li>
-            <li>
-                <figure>
-                    <img src="https://github.com/Aitishnitsa/eurobikes/blob/main/images/article3.jpg?raw=true"
-                        alt="women with bikes">
-                    <figcaption>
-                        <h3>Жіночі велосипеди</h3>
-                    </figcaption>
-                </figure>
-                <p>
-                    Регулярні велосипедні прогулянки - дуже хороше кардіотренування всім, і тим, хто займається
-                    велосипедним спортом на високому рівні, і тим, хто віддає перевагу приємним прогулянкам...
-                </p>
-                <a href="./bikes-for-women.html">Читати...</a>
-            </li>
-        </ul>
-    </section>
+
+    <div class="container form-container">
+        <section id="content">
+            <div class="row-info">
+                <div class="">
+                    <h1>Кошик</h1>
+                </div>
+                <div class="cart-table">
+                    <table>
+                        <tr class="table-element">
+                            <th>Фото</th>
+                            <th>Назва</th>
+                            <th>Кількість</th>
+                            <th>Ціна</th>
+                            <th>Усього</th>
+                        </tr>
+                        <tr class="table-element">
+                            <td>*фоточка*</td>
+                            <td>*назва і опис* Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</td>
+                            <td>*к-ть*</td>
+                            <td>*1234*</td>
+                            <td>*1234*</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr class="table-element">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Разом:</td>
+                            <td>1234</td>
+                        </tr>
+                        <tr class="table-element">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Знижка:</td>
+                            <td>-0,00</td>
+                        </tr>
+                        <tr class="table-element">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Доставка Новою Поштою:</td>
+                            <td>1234</td>
+                        </tr>
+                        <tr class="table-element">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Усього:</td>
+                            <td>1234</td>
+                        </tr>
+                        <tr class="table-element">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Промокод:</td>
+                            <td><input class="promo-input" type="text"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="order-form">
+                    <div>
+                        <div class="form-fields">
+                            <div>
+                                <label class="form-label" for="name">E-mail:</label>
+                                <input class="form-input" id="name" type="email" name="" />
+                            </div>
+                            <div>
+                                <label class="form-label" for="name">Телефон:</label>
+                                <input class="form-input" id="name" type="tel" name="" />
+                            </div>
+                            <div>
+                                <label class="form-label" for="name">Ім'я:</label>
+                                <input class="form-input" id="name" type="text" name="" />
+                            </div>
+                            <div>
+                                <label class="form-label" for="name">Прізвище:</label>
+                                <input class="form-input" id="name" type="text" name="" />
+                            </div>
+                            <div>
+                                <label class="form-label" for="name">Місто:</label>
+                                <input class="form-input" id="name" type="text" name="" />
+                            </div>
+                            <div>
+                                <label class="form-label" for="name">Відділення Нової пошти:</label>
+                                <input class="form-input" id="name" type="text" name="" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <div class="radiobuttons-group">
+                                <h3>Спосіб доставки</h3>
+                                <label for=""><input type="radio">Нова пошта</label>
+                                <label for=""><input type="radio">Укрпошта</label>
+                                <label for=""><input type="radio">Самовивіз</label>
+                            </div>
+                            <div class="radiobuttons-group">
+                                <h3>Спосіб оплати</h3>
+                                <label for=""><input type="radio">Повна передплата</label>
+                                <label for=""><input type="radio">Сплатити онлайн</label>
+                                <label for=""><input type="radio">Оплата в магазині</label>
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Коментар до замовлення</h3>
+                            <textarea class="form-input" name="" id="" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="form-actions">
+                            <button class="form-submit-button"
+                            id="">Скасувати</button>
+                            <button class="form-submit-button" id="">Оформити
+                                замовлення</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
 
     <div>
         <footer>
