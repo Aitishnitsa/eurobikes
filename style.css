@@ -264,6 +264,10 @@ form {
   background: #fff;
 }
 
+.dashed-border-bottom {
+  border-bottom: 1px dashed #d9d9d9;
+}
+
 .row-fluid {
   padding: 40px;
   width: 100%;
@@ -312,6 +316,41 @@ form {
   border-bottom: 1px dotted #ccc;
   padding: 0;
   margin: 0;
+}
+
+.products-list {
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-gap: 1rem;
+}
+
+.product {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #51804e;
+  border-radius: 0.5rem;
+}
+
+.product-name {
+  text-align: center;
+}
+
+.product-img {
+  max-width: 100%;
+}
+
+.product-price {
+  color: #354e36;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px;
 }
 
 .breweries {
@@ -788,7 +827,7 @@ th, td {
   margin-top: 20px;
 }
 
-.form-actions>button:first-of-type {
+#cancel-button {
   background-color: #51804e94;
   margin-right: 14px;
 }
@@ -826,6 +865,10 @@ th, td {
 
   #content {
     padding: 0;
+  }
+
+  .dashed-border-bottom {
+    border: none;
   }
   
 }
@@ -1000,5 +1043,9 @@ th, td {
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (max-width: 1200px) {}
+@media only screen and (max-width: 1200px) {
+  .nav-list li {
+    font-size: 14px;
+  }
+}
 

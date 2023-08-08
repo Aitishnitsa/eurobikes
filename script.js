@@ -37,31 +37,6 @@ const menuClose = () => {
 
 navToggleButton.addEventListener('click', ($event) => menuOpen($event));
 
-// const outsideClickMenuClose = ($event) => {
-//   const target = $event.target;
-//   if (!mobileMenu?.contains(target)) {
-//     mobileMenu?.classList.remove('opened');
-//   }
-// }
-
-// document.addEventListener('click', ($event) => outsideClickMenuClose($event));
-
-// const showArticle = (event) => {
-//   const readMoreButton = event.target;
-//   const hrefValue = readMoreButton.getAttribute('href');
-  
-//   const targetArticle = document.querySelector(hrefValue);
-//   if (targetArticle) {
-//     targetArticle.classList.remove('hidden');
-//   }
-// };
-
-// const hideArticle = () => {
-//   for (let i = 0; i < articleArray.length; i++) {
-//     articleArray[i].classList.add('hidden');
-//   }
-// }
-
 const searchImg = document.querySelector('.search-image');
 const searchBar = document.querySelector('.search-input');
 
@@ -78,3 +53,31 @@ const outsideClickSearchBarClose = ($event) => {
 }
 
 document.addEventListener('click', ($event) => outsideClickSearchBarClose($event));
+
+fetch('./bikes.json').then(response => response.json()).then(json => {
+  const list = document.querySelector(".products-list");
+
+  json.forEach(element => {
+    const product = document.createElement("div");
+    const name = document.createElement("h2");
+    const img = document.createElement("img");
+    const price = document.createElement("span");
+  
+    product.classList.add("product");
+    name.classList.add("product-name");
+    img.classList.add("product-img");
+    price.classList.add("product-price");
+
+    name.innerHTML = element.name;
+    img.src = element.imageUrl;
+    price.innerHTML = element.price + ".00 грн";
+
+    product.append(name, img, price);
+    list.appendChild(product);
+  })
+  .catch(error => {
+    console.error("Error fetching data:", error);
+  });
+
+})
+
