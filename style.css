@@ -106,11 +106,12 @@ form {
   height: 100%;
   align-items: center;
   margin-right: 5px;
+  color: white;
 }
 
 .search-input {
   padding: 10px;
-  border: none;
+  border: 1px solid #757575;
   border-radius: 20px;
   font-size: 16px;
   outline: none;
@@ -182,7 +183,7 @@ form {
   transform: scale(1);
 }
 
-.insta-img {
+.insta-img, svg {
   display: flex;
   height: 100%;
   align-items: center;
@@ -198,7 +199,6 @@ form {
   font-size: inherit;
   height: 2.5em;
   vertical-align: -0.125em;
-  color: white;
   position: relative;
   z-index: 1;
 }
@@ -351,6 +351,22 @@ form {
   font-size: 18px;
   font-weight: bold;
   margin: 10px;
+}
+
+.product-buy-button {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 10px;
+  color: white;
+  background-color: #51804e;
+  border-radius: 5px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.product-buy-button:hover {
+  background-color: #51804e94;
 }
 
 .breweries {
@@ -536,7 +552,7 @@ footer {
 }
 
 .contact-form {
-  background-color: #51804e21;
+  background-color: #51804e94;
   padding: 20px;
   border-radius: 5px;
 }
@@ -564,7 +580,7 @@ footer {
 
 textarea.form-input {
   height: 117px;
-  width: 600px;
+  width: 100%;
 }
 
 .form-actions {
@@ -582,7 +598,7 @@ textarea.form-input {
 }
 
 .form-submit-button:hover {
-  background-color: #51804ecc;
+  background-color: #51804e94;
 }
 
 .dropdown {
@@ -599,6 +615,10 @@ textarea.form-input {
   background-color: inherit;
   font-family: inherit;
   font-weight: 800;
+  margin: 0;
+}
+
+.nav-list-top>.nav-links>.dropdown>.dropbtn {
   margin: 0;
 }
 
@@ -631,7 +651,7 @@ textarea.form-input {
 }
 
 .add-review, .order-form {
-  background-color: #51804e21;
+  background-color: #51804e45;
   padding: 20px;
   border-radius: 5px;
 }
@@ -837,6 +857,49 @@ th, td {
   flex-direction: column;
 }
 
+.go-top {
+  transition: all ease 0.3s;
+  background-color: #fff;
+  background-image: url(https://static.thenounproject.com/png/1920948-200.png);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  display: block;
+  border-radius: 50%;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  right: 15px;
+  bottom: 15px;
+  cursor: pointer;
+}
+
+.go-top.no-active {
+  transform: translate3d(0,200px,0);
+}
+
+.go-top.active {
+  transform: translate3d(0,0px,0);
+}
+
+.to-top {
+  transition: all ease 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 20px;
+  box-sizing: border-box;
+  box-shadow: 0 0 30px 0 rgba(0,0,0,25%);
+  background-color: white;
+  color: black;
+}
+
+.to-top .search-image, .to-top a, .to-top .dropbtn, .to-top .svg-lines {
+  color: black;
+}
+
 @media only screen and (max-width: 525px) {
   .breweries>ul {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -946,10 +1009,6 @@ th, td {
     justify-content: center;
   }
 
-  textarea.form-input {
-    width: 200px;
-  }
-
   .article-background {
     padding: 15px;
   }
@@ -983,7 +1042,7 @@ th, td {
 
 /* Large devices (laptops/desktops, 992px and down) */
 @media only screen and (max-width: 992px) {
-  .nav-links {
+  .nav-links, .nav-links>.dropdown>.dropbtn {
     margin: 14px 0;
     color: white;
     font-weight: 800;
@@ -1023,6 +1082,7 @@ th, td {
   .nav-toggle {
     display: block;
     order: 1;
+    color: white;
   }
 
   .search {
@@ -1044,7 +1104,7 @@ th, td {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (max-width: 1200px) {
-  .nav-list li {
+  .nav-list li, .dropdown>.dropbtn {
     font-size: 14px;
   }
 }
