@@ -408,7 +408,7 @@ form {
   padding: 2rem;
 }
 
-.page-header2 {
+.page-header2, .input-group{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1053,6 +1053,7 @@ th, td {
 
   .row-info {
     padding: 10px;
+    box-sizing: border-box;
   }
 
   .middle-info {
