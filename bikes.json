@@ -4,7 +4,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230719_200919.jpg",
         "name": "Велосипед складний CITY STAR",
         "price": 7000,
-        "category": 0,
+        "category": 1,
         "rating": 4
     },
     {
@@ -12,7 +12,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230728_191748.jpg",
         "name": "Велосипед PEGASUS Milano",
         "price": 8000,
-        "category": 0,
+        "category": 1,
         "rating": 5
     },
     {
@@ -20,7 +20,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230725_190813.jpg",
         "name": "Велосипед KETTLER Touring",
         "price": 8000,
-        "category": 0,
+        "category": 1,
         "rating": 3
     },
     
@@ -29,7 +29,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230725_191025.jpg",
         "name": "Велосипед SCOTT Aspect",
         "price": 11500,
-        "category": 1,
+        "category": 2,
         "rating": 4
     },
     {
@@ -37,7 +37,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230728_192845.jpg",
         "name": "Велосипед RALEIGH Rushhour",
         "price": 16000,
-        "category": 1,
+        "category": 2,
         "rating": 5
     },
     {
@@ -45,7 +45,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230725_170307.jpg",
         "name": "Велосипед BULLS King Cobra",
         "price": 9000,
-        "category": 1,
+        "category": 2,
         "rating": 3
     },
 
@@ -54,7 +54,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230504_175000.jpg",
         "name": "Велосипед DECATHLON Van Rysel TRIBAN",
         "price": 12800,
-        "category": 2,
+        "category": 3,
         "rating": 4
     },
     {
@@ -62,7 +62,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230401_171506.jpg",
         "name": "Велосипед BERGAMONT Sweep 6EQ",
         "price": 18000,
-        "category": 2,
+        "category": 3,
         "rating": 5
     },
     {
@@ -70,7 +70,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230215_155005.jpg",
         "name": "Велосипед GERMATEC Trekking GTO 2",
         "price": 8000,
-        "category": 2,
+        "category": 3,
         "rating": 3
     },
 
@@ -79,7 +79,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230704_200843.jpg",
         "name": "Велосипед BULLS Wildcross Street",
         "price": 13000,
-        "category": 3,
+        "category": 4,
         "rating": 4
     },
     {
@@ -87,7 +87,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230411_165721.jpg",
         "name": "Велосипед RAYMON Crossray 4.0",
         "price": 15600,
-        "category": 3,
+        "category": 4,
         "rating": 5
     },
     {
@@ -95,7 +95,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230401_171506.jpg",
         "name": "Велосипед BERGAMONT Sweep 6EQ",
         "price": 18000,
-        "category": 3,
+        "category": 4,
         "rating": 3
     },
 
@@ -104,7 +104,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230706_182946.jpg",
         "name": "Велосипед PEGASUS Arcona",
         "price": 6800,
-        "category": 4,
+        "category": 5,
         "rating": 4
     },
     {
@@ -112,7 +112,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230525_193411.jpg",
         "name": "Велосипед BBF Mover",
         "price": 7200,
-        "category": 4,
+        "category": 5,
         "rating": 5
     },
     {
@@ -120,7 +120,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230524_191755.jpg",
         "name": "Велосипед BBF Cove",
         "price": 7500,
-        "category": 4,
+        "category": 5,
         "rating": 3
     },
 
@@ -129,7 +129,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20201004_153445.jpg",
         "name": "Електровелосипед FISCHER EM",
         "price": 22999,
-        "category": 5,
+        "category": 6,
         "rating": 4
     },
     {
@@ -137,7 +137,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_20180829_191729.jpg",
         "name": "Велосипед RIESE&MULLER Culture",
         "price": 6599,
-        "category": 5,
+        "category": 6,
         "rating": 5
     },
     {
@@ -145,7 +145,7 @@
         "imageUrl": "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_20180822_142427.jpg",
         "name": "Електровелосипед PROPHETE Navigator 6.4",
         "price": 7500,
-        "category": 5,
+        "category": 6,
         "rating": 3
     }
 ]

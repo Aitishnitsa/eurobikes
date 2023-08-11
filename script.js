@@ -6,6 +6,8 @@ const article1 = document.getElementById('article-1');
 const article2 = document.getElementById('article-2');
 const article3 = document.getElementById('article-3');
 const nav = document.querySelector(".navigation");
+const category = document.querySelector('#category');
+const submitButton = document.querySelector('#submit-btn');
 
 const articleArray = [article1, article2, article3];
 
@@ -65,7 +67,7 @@ fetch('./bikes.json').then(response => response.json()).then(json => {
     const img = document.createElement("img");
     const price = document.createElement("span");
     const buyButton = document.createElement("a");
-  
+
     product.classList.add("product");
     name.classList.add("product-name");
     img.classList.add("product-img");
@@ -77,11 +79,28 @@ fetch('./bikes.json').then(response => response.json()).then(json => {
     price.innerHTML = element.price + ".00 грн";
     buyButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/> </svg>` + "Придбати";
 
-    product.append(name, img, price, buyButton);
-    list.appendChild(product);
+    showByCategories(element);
+
+    if (category.value == 0) {
+      product.append(name, img, price, buyButton);
+      list.appendChild(product);
+    }
+    
   });
 
 });
+
+const showByCategories = (element) => {
+  submitButton.onclick = (event) => {
+    event.preventDefault();
+    console.log(category.value);
+    console.log(element.category);
+
+    if (element.category == category.value) {
+      console.log(element.price);
+    }
+  };
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", () => {

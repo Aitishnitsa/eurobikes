@@ -385,10 +385,11 @@ form {
   cursor: pointer;
   border-radius: 4px;
   line-height: 48px;
-  padding: 8px 16px;
-  font-size: 16px;
+  /* padding: 8px 16px;
+  font-size: 16px; */
   width: 150px;
   height: 24px;
+  outline: none;
 }
 
 .filter>div>div>input {
@@ -396,7 +397,7 @@ form {
   border-radius: 4px;
   outline: none;
   padding: 4px 8px;
-  width: 50px;
+  width: 54px;
 }
 
 .no-border>div>div>input, .no-border>div>select {

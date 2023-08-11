@@ -62,7 +62,7 @@
         <nav class="navigation">
             <div class="main-image">
                 <a href="#">
-                    <img src="https://github.com/Aitishnitsa/eurobikes/blob/main/images/logo.png?raw=true" alt="logo">
+                    <img src="./images/logo.png" alt="logo">
                 </a>
             </div>
             <div class="header-menu">
@@ -196,7 +196,7 @@
         </section>
     </div>
 
-    <div class="search-container">
+    <div class="filter-container">
         <section id="content" class="dashed-border-bottom">
             <div class="row-info">
                 <div class="sorting">
@@ -204,57 +204,215 @@
                     <div class="filter sorting">
                         <div>
                             <label for="">Сортування</label>
-                            <select name="" id=""></select>
+                            <select name="" id="">
+                                <option value="0">Рекомендовано</option>
+                                <option value="1">Найновіші</option>
+                                <option value="2">Найдешевші</option>
+                                <option value="3">Найдорожчі</option>
+                            </select>
                         </div>
                         <div>
                             <label for="">Кількість</label>
-                            <select name="" id=""></select>
+                            <select name="" id="">
+                                <option value="0">12</option>
+                                <option value="1">18</option>
+                                <option value="2">24</option>
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class="filter green-container no-border">
                     <div>
-                        <label for="">Категорія</label>
-                        <select name="" id=""></select>
+                        <label for="category">Категорія</label>
+                        <select name="" id="category">
+                            <option value="0">Усі</option>
+                            <option value="1">Дорожні</option>
+                            <option value="2">Гірські</option>
+                            <option value="3">Шосейні</option>
+                            <option value="4">Гібриди</option>
+                            <option value="5">Дитячі</option>
+                            <option value="6">Електровелосипеди</option>
+                            <option value="7">Аксесуари та запчастини</option>
+                        </select>
                     </div>
                     <div>
-                        <label for="">Ціна</label>
+                        <label for="price">Ціна</label>
                         <div>
                             <input type="number" placeholder="від">
                             <input type="number" placeholder="до">
                         </div>
                     </div>
                     <div>
-                        <label for="">Виробник</label>
-                        <select name="" id=""></select>
+                        <label for="brand">Виробник</label>
+                        <select name="" id="brand">
+                            <option value="0">Усі</option>
+                            <option value="1">Active</option>
+                            <option value="2">Alex</option>
+                            <option value="3">Alu Line</option>
+                            <option value="4">Angelo</option>
+                            <option value="5">Arkus</option>
+                            <option value="6">Barracuda</option>
+                            <option value="7">BBF</option>
+                            <option value="8">BULLS</option>
+                            <option value="9">BerGaMont</option>
+                            <option value="10">BMX</option>
+                            <option value="11">Centurion</option>
+                            <option value="12">City Star</option>
+                            <option value="13">Claud Butler</option>
+                            <option value="14">Columbus</option>
+                            <option value="15">Condor</option>
+                            <option value="16">Conquest</option>
+                            <option value="17">Continental</option>
+                            <option value="18">Conway</option>
+                            <option value="19">CYCO</option>
+                            <option value="20">Dahon</option>
+                            <option value="21">Decathlon</option>
+                            <option value="22">Falter</option>
+                            <option value="23">Fischer</option>
+                            <option value="24">Focus</option>
+                            <option value="25">Framework</option>
+                            <option value="26">Gazelle</option>
+                            <option value="27">Germatec</option>
+                            <option value="28">GIANT</option>
+                            <option value="29">Godewind</option>
+                            <option value="30">Gratia</option>
+                            <option value="31">Gudereit</option>
+                            <option value="32">Hanseatic</option>
+                            <option value="33">Hercules</option>
+                            <option value="34">Hoprider</option>
+                            <option value="35">Ideal</option>
+                            <option value="36">Kalkhoff</option>
+                            <option value="37">KS Cycling</option>
+                            <option value="38">KTM</option>
+                            <option value="39">Little Rock</option>
+                            <option value="40">MC Kenzie</option>
+                            <option value="41">Morrison</option>
+                            <option value="42">Mifa</option>
+                            <option value="43">Nobles</option>
+                            <option value="44">NSU</option>
+                            <option value="45">Passat</option>
+                            <option value="46">Pegasus</option>
+                            <option value="47">Phoenix</option>
+                            <option value="48">Prophete</option>
+                            <option value="49">Prince</option>
+                            <option value="50">Rabeneick</option>
+                            <option value="51">Ragazzi</option>
+                            <option value="52">Raleigh</option>
+                            <option value="53">Red Bull</option>
+                            <option value="54">Ritchey</option>
+                            <option value="55">RiverSide</option>
+                            <option value="56">RIXE</option>
+                            <option value="57">Scott</option>
+                            <option value="58">SHIMANO</option>
+                            <option value="59">Solution</option>
+                            <option value="60">Sprint</option>
+                            <option value="61">Stevens</option>
+                            <option value="62">Stinger</option>
+                            <option value="63">Stigher</option>
+                            <option value="64">Stratos</option>
+                            <option value="65">Texo</option>
+                            <option value="66">Torpedo</option>
+                            <option value="67">Torrek</option>
+                            <option value="68">Touring Star</option>
+                            <option value="69">Trekking Star</option>
+                            <option value="70">Univega</option>
+                            <option value="71">Victoria</option>
+                            <option value="72">Vortex</option>
+                            <option value="73">Voyage</option>
+                            <option value="74">Winora</option>
+                            <option value="75">Zundapp</option>
+                            <option value="76">Kettler</option>
+                            <option value="77">Bikemanufakture</option>
+                            <option value="78">Steppenwolf</option>
+                            <option value="79">Carver</option>
+                            <option value="80">Adler</option>
+                            <option value="81">Avico</option>
+                            <option value="82">Blackshox</option>
+                            <option value="83">Fahrrad Manufaktur</option>
+                            <option value="84">La Strada</option>
+                        </select>
                     </div>
                     <div>
-                        <label for="">Розмір рами</label>
-                        <select name="" id=""></select>
+                        <label for="frame-size">Розмір рами</label>
+                        <select name="" id="">
+                            <option value="0">Усі</option>
+                            <option value="1">XS(13-14)</option>
+                            <option value="2">S(15-16)</option>
+                            <option value="3">M(17-18)</option>
+                            <option value="4">L(19-20)</option>
+                            <option value="5">XL(21-22)</option>
+                            <option value="6">XXL(23")</option>
+                        </select>
                     </div>
                     <div>
-                        <label for="">Діаметр коліс</label>
-                        <select name="" id=""></select>
+                        <label for="wheel-diameter">Діаметр коліс</label>
+                        <select name="" id="wheel-diameter">
+                            <option value="0">Усі</option>
+                            <option value="1">12"</option>
+                            <option value="2">14"</option>
+                            <option value="3">16"</option>
+                            <option value="4">18"</option>
+                            <option value="5">20"</option>
+                            <option value="6">22"</option>
+                            <option value="7">24"</option>
+                            <option value="8">26"</option>
+                            <option value="9">27.5"</option>
+                            <option value="9">28"</option>
+                            <option value="9">29"</option>
+                            <option value="9">Інший</option>
+                        </select>
                     </div>
                     <div>
-                        <label for="">Гальма</label>
-                        <select name="" id=""></select>
+                        <label for="brakes">Гальма</label>
+                        <select name="" id="brakes">
+                            <option value="0">Усі</option>
+                            <option value="1">Дискові гідравлічні</option>
+                            <option value="2">Дискові механічні</option>
+                            <option value="3">Ножні</option>
+                            <option value="4">Ободні</option>
+                            <option value="5">Інші</option>
+                        </select>
                     </div>
                     <div>
-                        <label for="">Тип амортизації</label>
-                        <select name="" id=""></select>
+                        <label for="amortization">Тип амортизації</label>
+                        <select name="" id="amortization">
+                            <option value="0">Усі</option>
+                            <option value="1">Хардтейл</option>
+                            <option value="2">Без амортизації</option>
+                            <option value="3">Двопідвіс</option>
+                            <option value="4">Задня</option>
+                        </select>
                     </div>
                     <div>
-                        <label for="">Для кого</label>
-                        <select name="" id=""></select>
+                        <label for="is-for">Для кого</label>
+                        <select name="" id="is-for">
+                            <option value="0">Усі</option>
+                            <option value="1">Для жінок</option>
+                            <option value="2">Для підлітків</option>
+                            <option value="3">Для чоловіків</option>
+                            <option value="4">Універсальні</option>
+                        </select>
                     </div>
                     <div>
                         <label for="">Кількість передач</label>
-                        <div>
-                            <input type="number" placeholder="від">
-                            <input type="number" placeholder="до">
-                        </div>
+                            <!-- <input type="number" placeholder="від">
+                            <input type="number" placeholder="до"> -->
+                            <select name="" id="">
+                                <option value="0"></option>
+                                <option value="1">3</option>
+                                <option value="2">7</option>
+                                <option value="3">21</option>
+                                <option value="4">28</option>
+                            </select>
+                            <select name="" id="">
+                                <option value="0"></option>
+                                <option value="1">3</option>
+                                <option value="2">7</option>
+                                <option value="3">21</option>
+                                <option value="4">28</option>
+                            </select>
                     </div>
+                    <button id="submit-btn" class="form-submit-button" type="submit">Пошук</button>
                 </div>
             </div>
         </section>
@@ -309,7 +467,7 @@
     <footer>
         <div class="logo">
             <a href="">
-                <img src="https://github.com/Aitishnitsa/eurobikes/blob/main/images/logo.png?raw=true" alt="logo">
+                <img src="./images/logo.png" alt="logo">
             </a>
         </div>
         <div class="footer-contacts">
