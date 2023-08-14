@@ -204,7 +204,7 @@
                     <div class="filter sorting">
                         <div>
                             <label for="">Сортування</label>
-                            <select name="" id="">
+                            <select name="" id="sorting" onchange="sortItems()">
                                 <option value="0">Рекомендовано</option>
                                 <option value="1">Найновіші</option>
                                 <option value="2">Найдешевші</option>
@@ -238,8 +238,8 @@
                     <div>
                         <label for="price">Ціна</label>
                         <div>
-                            <input type="number" placeholder="від">
-                            <input type="number" placeholder="до">
+                            <input type="number" placeholder="від" id="minPrice">
+                            <input type="number" placeholder="до" id="maxPrice">
                         </div>
                     </div>
                     <div>
@@ -334,7 +334,7 @@
                     </div>
                     <div>
                         <label for="frame-size">Розмір рами</label>
-                        <select name="" id="">
+                        <select name="" id="frame-size">
                             <option value="0">Усі</option>
                             <option value="1">XS(13-14)</option>
                             <option value="2">S(15-16)</option>
@@ -416,7 +416,7 @@
                                 </select>
                             </div> -->
                     </div>
-                    <button id="submit-btn" class="form-submit-button" type="submit">Пошук</button>
+                    <button id="submit-btn" class="form-submit-button" type="submit" onclick="">Пошук</button>
                 </div>
             </div>
         </section>

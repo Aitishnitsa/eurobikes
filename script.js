@@ -1,15 +1,20 @@
 const navToggleButton = document.querySelector('.nav-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
-const headerMenu = document.querySelector('.header-menu')
-const svgPath = document.getElementById("svg-path");
-const article1 = document.getElementById('article-1');
-const article2 = document.getElementById('article-2');
-const article3 = document.getElementById('article-3');
+const headerMenu = document.querySelector('.header-menu');
 const nav = document.querySelector(".navigation");
+
+const searchImg = document.querySelector('.search-image');
+const searchBar = document.querySelector('.search-input');
+
+const svgPath = document.getElementById("svg-path");
+
+const cartTable = document.querySelector('.cart-items');
+const list = document.querySelector(".products-list");
 const category = document.querySelector('#category');
+const sortingSelect = document.querySelector('#sorting');
 const submitButton = document.querySelector('#submit-btn');
 
-const articleArray = [article1, article2, article3];
+let cart = [];
 
 let isMenuOpen = false;
 
@@ -41,9 +46,6 @@ const menuClose = () => {
 
 navToggleButton.addEventListener('click', ($event) => menuOpen($event));
 
-const searchImg = document.querySelector('.search-image');
-const searchBar = document.querySelector('.search-input');
-
 const showSearchBar = ($event) => {
   searchBar.classList.add('opened');
   $event.stopPropagation();
@@ -58,10 +60,10 @@ const outsideClickSearchBarClose = ($event) => {
 
 document.addEventListener('click', ($event) => outsideClickSearchBarClose($event));
 
-fetch('./bikes.json').then(response => response.json()).then(json => {
-  const list = document.querySelector(".products-list");
+let bikesArray = [];
 
-  json.forEach(element => {
+const createProductElement = (array) => {
+  array.forEach(item => {
     const product = document.createElement("div");
     const name = document.createElement("h2");
     const img = document.createElement("img");
@@ -74,32 +76,104 @@ fetch('./bikes.json').then(response => response.json()).then(json => {
     price.classList.add("product-price");
     buyButton.classList.add("product-buy-button");
 
-    name.innerHTML = element.name;
-    img.src = element.imageUrl;
-    price.innerHTML = element.price + ".00 грн";
-    buyButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/> </svg>` + "Придбати";
+    name.innerHTML = item.name;
+    img.src = item.imageUrl;
+    price.innerHTML = item.price + ".00 грн";
+    buyButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" 
+      width="16" height="16" fill="currentColor" class="bi bi-cart" 
+      viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 
+      0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 
+      13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 
+      1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 
+      0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 
+      0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/> 
+      </svg>` + "Придбати";
 
-    showByCategories(element);
+    buyButton.addEventListener("click", () => {
+      cart.push(item);
+      console.log(cart);
+      addItemToCart(cart);
+    });
 
-    if (category.value == 0) {
-      product.append(name, img, price, buyButton);
-      list.appendChild(product);
-    }
-    
+    product.append(name, img, price, buyButton);
+    list.appendChild(product);
   });
+}
 
+fetch('./bikes.json')
+.then(response => response.json())
+.then(json => {
+  bikesArray = json;
+  createProductElement(bikesArray);
 });
 
-const showByCategories = (element) => {
-  submitButton.onclick = (event) => {
-    event.preventDefault();
-    console.log(category.value);
-    console.log(element.category);
+const sortItems = () => {
+  if (sortingSelect.value === "2") {
+    console.log("2");
+    bikesArray.sort((a, b) => a.price - b.price); 
+  } else if (sortingSelect.value === "3") {
+    console.log("3");
+    bikesArray.sort((b, a) => a.price - b.price); 
+  } 
+  
+  list.innerHTML = "";
+  
+  createProductElement(bikesArray);
+}
 
-    if (element.category == category.value) {
-      console.log(element.price);
-    }
-  };
+const filter = (event) => {
+  event.preventDefault();
+  
+  sortItems();
+  
+  const selectedCategory = +category.value;
+  const minPrice = parseFloat(document.getElementById("minPrice").value) || 0;
+  const maxPrice = parseFloat(document.getElementById("maxPrice").value) || Number.POSITIVE_INFINITY;
+
+  let filteredBikes = [];
+
+  if (selectedCategory == "0") {
+    filteredBikes = bikesArray; 
+  } else {
+    filteredBikes = bikesArray.filter(bike => bike.category === selectedCategory);
+  }
+  
+  if (!isNaN(minPrice) && !isNaN(maxPrice)) {
+    filteredBikes = filteredBikes.filter(bike => bike.price >= minPrice && bike.price <= maxPrice);
+  }
+  
+  list.innerHTML = "";
+  
+  createProductElement(filteredBikes);
+};
+
+submitButton.addEventListener('click', (event) => filter(event));
+sortingSelect.addEventListener('change', sortItems());
+
+const addItemToCart = (array) => {
+  array.forEach(item => {
+    console.log("addItemToCart");
+
+    const table = document.createElement('table');
+
+    const row = document.createElement('tr');
+    const col1 = document.createElement('td');
+    const col2 = document.createElement('td');
+    const col3 = document.createElement('td');
+    const col4 = document.createElement('td');
+
+    const img = document.createElement('img');
+
+    img.src = item.imageUrl;
+    col1.innerHTML = img;
+    col2.innerText = item.name;
+    col3.innerText = item.price;
+    col4.innerText = item.price;
+
+    row.append(col1, col2, col3, col4);
+    table.append(row);
+    cartTable.appendChild(table);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
