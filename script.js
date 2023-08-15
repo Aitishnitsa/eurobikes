@@ -1,3 +1,8 @@
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 const navToggleButton = document.querySelector('.nav-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
 const headerMenu = document.querySelector('.header-menu');
@@ -8,12 +13,19 @@ const searchBar = document.querySelector('.search-input');
 
 const svgPath = document.getElementById("svg-path");
 
+const productsContainer = document.getElementById('products-container');
 const cartTable = document.querySelector('.cart-items');
 const list = document.querySelector(".products-list");
 const category = document.querySelector('#category');
 const sortingSelect = document.querySelector('#sorting');
 const submitButton = document.querySelector('#submit-btn');
+const clearButton = document.querySelector('#clear-btn');
 
+const minPriceField = document.getElementById("minPrice");
+const maxPriceField = document.getElementById("maxPrice");
+
+let bikesArray = [];
+let filteredBikes = [];
 let cart = [];
 
 let isMenuOpen = false;
@@ -46,6 +58,24 @@ const menuClose = () => {
 
 navToggleButton.addEventListener('click', ($event) => menuOpen($event));
 
+const searchItem = (event) => {
+  event.stopPropagation();
+
+  if (searchBar.value === '') { return; }
+
+  let searchItems = bikesArray.filter(bike => bike.name.toLowerCase().includes(searchBar.value));;
+
+  list.innerHTML = "";
+
+  createProductElement(searchItems);
+  productsContainer.scrollIntoView({ behavior: 'smooth' });
+  
+  searchItems = [];
+  searchBar.value = '';
+}
+
+searchImg.addEventListener('click', (event) => searchItem(event));
+
 const showSearchBar = ($event) => {
   searchBar.classList.add('opened');
   $event.stopPropagation();
@@ -60,7 +90,6 @@ const outsideClickSearchBarClose = ($event) => {
 
 document.addEventListener('click', ($event) => outsideClickSearchBarClose($event));
 
-let bikesArray = [];
 
 const createProductElement = (array) => {
   array.forEach(item => {
@@ -101,54 +130,70 @@ const createProductElement = (array) => {
 }
 
 fetch('./bikes.json')
-.then(response => response.json())
-.then(json => {
-  bikesArray = json;
-  createProductElement(bikesArray);
-});
+  .then(response => response.json())
+  .then(json => {
+    bikesArray = json;
+    filteredBikes = bikesArray;
+    createProductElement(filteredBikes);
+  });
 
 const sortItems = () => {
   if (sortingSelect.value === "2") {
     console.log("2");
-    bikesArray.sort((a, b) => a.price - b.price); 
+    filteredBikes.sort((a, b) => a.price - b.price);
   } else if (sortingSelect.value === "3") {
     console.log("3");
-    bikesArray.sort((b, a) => a.price - b.price); 
-  } 
-  
+    filteredBikes.sort((b, a) => a.price - b.price);
+  }
+
   list.innerHTML = "";
+
+  createProductElement(filteredBikes);
+}
+
+const autoSelectCategory = (value, event) => {
+  event.preventDefault();
+
+  category.value = value;
+  filter(event);
   
-  createProductElement(bikesArray);
+  productsContainer.scrollIntoView({ behavior: 'smooth' });
 }
 
 const filter = (event) => {
-  event.preventDefault();
-  
-  sortItems();
-  
-  const selectedCategory = +category.value;
-  const minPrice = parseFloat(document.getElementById("minPrice").value) || 0;
-  const maxPrice = parseFloat(document.getElementById("maxPrice").value) || Number.POSITIVE_INFINITY;
+  // event.preventDefault();
 
-  let filteredBikes = [];
+  const selectedCategory = +category.value;
+  const minPrice = parseFloat(minPriceField.value) || 0;
+  const maxPrice = parseFloat(maxPriceField.value) || Number.POSITIVE_INFINITY;
 
   if (selectedCategory == "0") {
-    filteredBikes = bikesArray; 
+    filteredBikes = bikesArray;
   } else {
     filteredBikes = bikesArray.filter(bike => bike.category === selectedCategory);
   }
-  
+
   if (!isNaN(minPrice) && !isNaN(maxPrice)) {
     filteredBikes = filteredBikes.filter(bike => bike.price >= minPrice && bike.price <= maxPrice);
   }
-  
+
   list.innerHTML = "";
-  
+
   createProductElement(filteredBikes);
+  sortItems();
 };
 
-submitButton.addEventListener('click', (event) => filter(event));
-sortingSelect.addEventListener('change', sortItems());
+const clearFields = (event) => {
+  event.preventDefault();
+
+  if (category.value !== "0" || minPrice.value != '' || maxPrice.value != '') {
+    category.value = "0";
+    minPriceField.value = "";
+    maxPriceField.value = "";
+  }
+
+}
+
 
 const addItemToCart = (array) => {
   array.forEach(item => {
@@ -176,11 +221,15 @@ const addItemToCart = (array) => {
   });
 }
 
+clearButton.addEventListener('click', (event) => clearFields(event));
+submitButton.addEventListener('click', (event) => filter(event));
+sortingSelect.addEventListener('change', sortItems);
+
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", () => {
     const top = document.querySelector(".go-top");
 
-    if(window.scrollY >= 100 && !isMenuOpen) {
+    if (window.scrollY >= 100 && !isMenuOpen) {
       nav.classList.add("to-top");
     } else {
       nav.classList.remove("to-top");
@@ -214,8 +263,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 15);
   }
 });
-
-// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-let vh = window.innerHeight * 0.01;
-// Then we set the value in the --vh custom property to the root of the document
-document.documentElement.style.setProperty('--vh', `${vh}px`);

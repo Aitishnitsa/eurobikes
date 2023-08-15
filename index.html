@@ -24,13 +24,13 @@
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-content">
-                            <a href="#">Дорожні</a>
-                            <a href="#">Гірські</a>
-                            <a href="#">Шосейні</a>
-                            <a href="#">Електровелосипеди</a>
-                            <a href="#">Гібриди</a>
-                            <a href="#">Дитячі</a>
-                            <a href="#">Аксесуари та запчастини</a>
+                            <a href="#products-container" onclick="autoSelectCategory(1, event)">Дорожні</a>
+                            <a href="#products-container" onclick="autoSelectCategory(2, event)">Гірські</a>
+                            <a href="#products-container" onclick="autoSelectCategory(3, event)">Шосейні</a>
+                            <a href="#products-container" onclick="autoSelectCategory(4, event)">Електровелосипеди</a>
+                            <a href="#products-container" onclick="autoSelectCategory(5, event)">Гібриди</a>
+                            <a href="#products-container" onclick="autoSelectCategory(6, event)">Дитячі</a>
+                            <a href="#products-container" onclick="autoSelectCategory(7, event)">Аксесуари та запчастини</a>
                         </div>
                     </div>
                 </li>
@@ -88,13 +88,13 @@
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-content">
-                            <a href="#">Дорожні</a>
-                            <a href="#">Гірські</a>
-                            <a href="#">Шосейні</a>
-                            <a href="#">Електровелосипеди</a>
-                            <a href="#">Гібриди</a>
-                            <a href="#">Дитячі</a>
-                            <a href="#">Аксесуари та запчастини</a>
+                            <a href="#products-container" onclick="autoSelectCategory(1, event)">Дорожні</a>
+                            <a href="#products-container" onclick="autoSelectCategory(2, event)">Гірські</a>
+                            <a href="#products-container" onclick="autoSelectCategory(3, event)">Шосейні</a>
+                            <a href="#products-container" onclick="autoSelectCategory(4, event)">Електровелосипеди</a>
+                            <a href="#products-container" onclick="autoSelectCategory(5, event)">Гібриди</a>
+                            <a href="#products-container" onclick="autoSelectCategory(6, event)">Дитячі</a>
+                            <a href="#products-container" onclick="autoSelectCategory(7, event)">Аксесуари та запчастини</a>
                         </div>
                     </div>
                 </li>
@@ -155,38 +155,38 @@
                         <span>Категорії</span>
                     </h3>
                     <div class="sidebar-content">
-                        <div class="shop-menu">
-                            <a href="">
+                        <div class="shop-menu" onclick="autoSelectCategory(1, event)">
+                            <a href="#products-container">
                                 Дорожні
                             </a>
                         </div>
-                        <div class="shop-menu">
-                            <a href="">
+                        <div class="shop-menu" onclick="autoSelectCategory(2, event)">
+                            <a href="#products-container">
                                 Гірські
                             </a>
                         </div>
-                        <div class="shop-menu">
-                            <a href="">
+                        <div class="shop-menu" onclick="autoSelectCategory(3, event)">
+                            <a href="#products-container">
                                 Шосейні
                             </a>
                         </div>
-                        <div class="shop-menu">
-                            <a href="">
+                        <div class="shop-menu" onclick="autoSelectCategory(4, event)">
+                            <a href="#products-container">
                                 Гібриди
                             </a>
                         </div>
-                        <div class="shop-menu">
-                            <a href="">
+                        <div class="shop-menu" onclick="autoSelectCategory(5, event)">
+                            <a href="#products-container">
                                 Дитячі
                             </a>
                         </div>
-                        <div class="shop-menu">
-                            <a href="">
+                        <div class="shop-menu" onclick="autoSelectCategory(6, event)">
+                            <a href="#products-container">
                                 Електровелосипеди
                             </a>
                         </div>
-                        <div class="shop-menu">
-                            <a href="">
+                        <div class="shop-menu" onclick="autoSelectCategory(7, event)">
+                            <a href="#products-container">
                                 Аксесуари та запчастини
                             </a>
                         </div>
@@ -196,7 +196,7 @@
         </section>
     </div>
 
-    <div class="filter-container">
+    <div id="filter" class="filter-container">
         <section id="content" class="dashed-border-bottom">
             <div class="row-info">
                 <div class="sorting">
@@ -204,7 +204,7 @@
                     <div class="filter sorting">
                         <div>
                             <label for="">Сортування</label>
-                            <select name="" id="sorting" onchange="sortItems()">
+                            <select name="" id="sorting">
                                 <option value="0">Рекомендовано</option>
                                 <option value="1">Найновіші</option>
                                 <option value="2">Найдешевші</option>
@@ -416,13 +416,16 @@
                                 </select>
                             </div> -->
                     </div>
-                    <button id="submit-btn" class="form-submit-button" type="submit" onclick="">Пошук</button>
+                    <div class="">
+                        <button id="clear-btn" class="form-submit-button" type="submit">Очистити</button>
+                        <button id="submit-btn" class="form-submit-button" type="submit">Пошук</button>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <div class="products-container">
+    <div id="products-container">
         <section id="content">
             <div class="row-fluid">
                 <div class="products-list"></div>

@@ -159,6 +159,10 @@ form {
   background-color: #c9233a;
 }
 
+.to-top .nav-links:last-of-type::after, .nav-links:last-of-type::after {
+  background-color: transparent;
+} 
+
 .nav-list {
   display: flex;
   align-items: center;
@@ -313,6 +317,11 @@ form {
   margin: 0;
   color: #616161;
   transition: all 0.2s ease-out;
+}
+
+.sidebar-content a:hover {
+  background-color: #51804e45;
+  border-radius: 25px;
 }
 
 .shop-menu {
@@ -659,7 +668,6 @@ textarea.form-input {
   border: none;
   outline: none;
   color: white;
-  padding: 0px 10px;
   background-color: inherit;
   font-family: inherit;
   font-weight: 800;
@@ -682,6 +690,7 @@ textarea.form-input {
 }
 
 .dropdown-content a {
+  transition: all 0.3s ease;
   float: none;
   color: black;
   padding: 3px 10px;
@@ -691,7 +700,7 @@ textarea.form-input {
 }
 
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: #51804e45;
 }
 
 .dropdown:hover .dropdown-content {
@@ -896,7 +905,7 @@ th, td {
   margin-top: 20px;
 }
 
-#cancel-button {
+#cancel-button, #clear-btn {
   background-color: #51804e94;
   margin-right: 14px;
 }
@@ -966,6 +975,10 @@ th, td {
   box-shadow: 0 0 30px 0 rgba(0,0,0,25%);
   background-color: white;
   color: black;
+}
+
+.to-top .nav-links::after {
+  background-color: #2e452c;
 }
 
 .to-top .search-image, .to-top a, .to-top .dropbtn, .to-top .svg-lines {
