@@ -64,7 +64,13 @@ form {
 }
 
 .header-articles {
+  position: relative;
+  height: auto;
   background-image: url(https://cdn.shopify.com/s/files/1/0250/6460/3682/products/BirdBike3_2.jpg?v=1654549266);
+}
+
+.header-articles::after {
+  height: 100%;
 }
 
 .header-delivery {
@@ -319,7 +325,7 @@ form {
   transition: all 0.2s ease-out;
 }
 
-.sidebar-content a:hover {
+.article-hover, .sidebar-content a:hover {
   background-color: #51804e45;
   border-radius: 25px;
 }

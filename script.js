@@ -7,6 +7,7 @@ const navToggleButton = document.querySelector('.nav-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
 const headerMenu = document.querySelector('.header-menu');
 const nav = document.querySelector(".navigation");
+const readMoreButton = document.querySelector("#read-more-header-button");
 
 const searchImg = document.querySelector('.search-image');
 const searchBar = document.querySelector('.search-input');
@@ -20,6 +21,7 @@ const category = document.querySelector('#category');
 const sortingSelect = document.querySelector('#sorting');
 const submitButton = document.querySelector('#submit-btn');
 const clearButton = document.querySelector('#clear-btn');
+const content = document.querySelector("#content");
 
 const minPriceField = document.getElementById("minPrice");
 const maxPriceField = document.getElementById("maxPrice");
@@ -29,6 +31,11 @@ let filteredBikes = [];
 let cart = [];
 
 let isMenuOpen = false;
+
+readMoreButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  content.scrollIntoView({ behavior: 'smooth' });
+});
 
 const menuOpen = ($event) => {
   if (!mobileMenu) { return; }
@@ -58,23 +65,37 @@ const menuClose = () => {
 
 navToggleButton.addEventListener('click', ($event) => menuOpen($event));
 
-const searchItem = (event) => {
-  event.stopPropagation();
-
-  if (searchBar.value === '') { return; }
-
-  let searchItems = bikesArray.filter(bike => bike.name.toLowerCase().includes(searchBar.value));;
+const searchItem = (input) => {
+  let searchItems = bikesArray.filter(bike => bike.name.toLowerCase().includes(input.toLowerCase()));
 
   list.innerHTML = "";
 
+  if (searchItems.length === 0) { 
+    list.innerHTML = "Не знайдено товарів за вашим пошуковим запитом :(";
+  }
+
   createProductElement(searchItems);
   productsContainer.scrollIntoView({ behavior: 'smooth' });
-  
-  searchItems = [];
-  searchBar.value = '';
 }
 
-searchImg.addEventListener('click', (event) => searchItem(event));
+searchImg.addEventListener('click', () => {
+  const input = searchBar.value.trim();
+
+  if (input === '') {
+    return;
+  }
+
+  searchItem(input);
+
+  searchBar.value = ''; 
+});
+
+searchBar.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault(); 
+    searchImg.click(); 
+  }
+});
 
 const showSearchBar = ($event) => {
   searchBar.classList.add('opened');
@@ -178,6 +199,11 @@ const filter = (event) => {
   }
 
   list.innerHTML = "";
+
+  if (filteredBikes.length === 0) { 
+    list.innerHTML = "Не знайдено товарів за вашими критеріями :(";
+    return;
+  }
 
   createProductElement(filteredBikes);
   sortItems();
