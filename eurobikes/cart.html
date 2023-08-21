@@ -160,90 +160,77 @@
                     <h1>Кошик</h1>
                 </div>
                 <div class="cart-table">
-                    <table>
-                        <tr class="table-element">
-                            <th>Фото</th>
-                            <th>Назва</th>
-                            <th>Кількість</th>
-                            <th>Ціна</th>
-                            <th>Усього</th>
-                        </tr>
-                        <!-- треба буде реалізувати денамічно додавання товарів до кошика -->
-                        <div class="cart-items">
-                            <tr class="table-element">
-                                <td>*фоточка*</td>
-                                <td>*назва і опис* Lorem Ipsum fhlk ief abuefawef  eruf iaef awe  uef iaufawifafg  iufhai s</td><td>*к-ть*</td>
-                                <td>*1234*</td>
-                                <td>*1234*</td>
-                            </tr>
+                    <div class="cart-items">
+                        <!-- -->
                         </div>
-                        <!-- ------------------------------------------------------------ -->
-                    </table>
                     <table>
                         <tr class="table-element">
                             <td></td>
                             <td></td>
                             <td></td>
                             <td>Разом:</td>
-                            <td>1234</td>
+                            <td id="bikesPrice"></td>
                         </tr>
                         <tr class="table-element">
                             <td></td>
                             <td></td>
                             <td></td>
                             <td>Знижка:</td>
-                            <td>-0,00</td>
+                            <td id="discount"></td>
                         </tr>
                         <tr class="table-element">
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>Доставка Новою Поштою:</td>
-                            <td>1234</td>
+                            <td>Доставка <span id="post-company">Новою поштою:</span></td>
+                            <td id="deliveryPrice"></td>
                         </tr>
                         <tr class="table-element">
                             <td></td>
                             <td></td>
                             <td></td>
                             <td>Усього:</td>
-                            <td>1234</td>
+                            <td id="fullPrice"></td>
                         </tr>
                         <tr class="table-element">
                             <td></td>
                             <td></td>
                             <td></td>
                             <td>Промокод:</td>
-                            <td><input class="promo-input" type="text"></td>
+                            <td><input id="promo" class="promo-input" type="text"></td>
                         </tr>
                     </table>
+                    <div class="form-actions">
+                        <button class="form-submit-button" id="refresh-button">Оновити</button>
+                    </div>
                 </div>
 
                 <div class="order-form">
                     <div>
                         <div class="form-fields">
                             <div>
-                                <label class="form-label" for="name">E-mail:</label>
-                                <input class="form-input" id="name" type="email" name="" />
+                                <label class="form-label" for="e-mail">E-mail:</label>
+                                <input class="form-input" id="e-mail" type="email" name="" />
                             </div>
                             <div>
-                                <label class="form-label" for="name">Телефон:</label>
-                                <input class="form-input" id="name" type="tel" name="" />
+                                <label class="form-label" for="phone">Телефон:</label>
+                                <input class="form-input" id="phone" type="tel" name="" />
                             </div>
                             <div>
-                                <label class="form-label" for="name">Ім'я:</label>
-                                <input class="form-input" id="name" type="text" name="" />
+                                <label class="form-label" for="firstName">Ім'я:</label>
+                                <input class="form-input" id="firstName" type="text" name="" />
                             </div>
                             <div>
-                                <label class="form-label" for="name">Прізвище:</label>
-                                <input class="form-input" id="name" type="text" name="" />
+                                <label class="form-label" for="lastName">Прізвище:</label>
+                                <input class="form-input" id="lastName" type="text" name="" />
                             </div>
                             <div>
-                                <label class="form-label" for="name">Місто:</label>
-                                <input class="form-input" id="name" type="text" name="" />
+                                <label class="form-label" for="city">Місто:</label>
+                                <input class="form-input" id="city" type="text" name="" />
                             </div>
                             <div>
-                                <label class="form-label" for="name">Відділення Нової пошти:</label>
-                                <input class="form-input" id="name" type="text" name="" />
+                                <label class="form-label" for="post" id="">Відділення </label> <span id="post-company">Нової пошти:</span>
+                                <input class="form-input" id="post" type="text" name="" />
                             </div>
                         </div>
                     </div>
@@ -252,15 +239,15 @@
                         <div>
                             <div class="radiobuttons-group">
                                 <h3>Спосіб доставки</h3>
-                                <label for=""><input type="radio" name="delivery" checked>Нова пошта</label>
-                                <label for=""><input type="radio" name="delivery">Укрпошта</label>
-                                <label for=""><input type="radio" name="delivery">Самовивіз</label>
+                                <label for="delivery"><input type="radio" name="delivery" id="novaPoshta" checked>Нова пошта</label>
+                                <label for="delivery"><input type="radio" name="delivery" id="ukrPoshta">Укрпошта</label>
+                                <label for="delivery"><input type="radio" name="delivery" id="selfDelivery">Самовивіз</label>
                             </div>
                             <div class="radiobuttons-group">
                                 <h3>Спосіб оплати</h3>
-                                <label for=""><input type="radio" name="payment" checked>Повна передплата</label>
-                                <label for=""><input type="radio" name="payment">Сплатити онлайн</label>
-                                <label for=""><input type="radio" name="payment">Оплата в магазині</label>
+                                <label for="payment"><input type="radio" name="payment" checked>Повна передплата</label>
+                                <label for="payment"><input type="radio" name="payment">Сплатити онлайн</label>
+                                <label for="payment"><input type="radio" name="payment">Оплата в магазині</label>
                             </div>
                         </div>
                         <div>

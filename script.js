@@ -28,14 +28,26 @@ const maxPriceField = document.getElementById("maxPrice");
 
 let bikesArray = [];
 let filteredBikes = [];
-let cart = [];
+let cart = [ 
+  {
+    id: 0,
+    imageUrl: "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230719_200919.jpg",
+    name: "Велосипед складний CITY STAR",
+    price: 7000,
+    category: 1,
+    rating: 4
+  },
+  {
+    id: 1,
+    imageUrl: "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230728_191748.jpg",
+    name: "Велосипед PEGASUS Milano",
+    price: 8000,
+    category: 1,
+    rating: 5
+  }
+];
 
 let isMenuOpen = false;
-
-readMoreButton.addEventListener('click', (event) => {
-  event.preventDefault();
-  content.scrollIntoView({ behavior: 'smooth' });
-});
 
 const menuOpen = ($event) => {
   if (!mobileMenu) { return; }
@@ -81,9 +93,7 @@ const searchItem = (input) => {
 searchImg.addEventListener('click', () => {
   const input = searchBar.value.trim();
 
-  if (input === '') {
-    return;
-  }
+  if (input === '') { return; }
 
   searchItem(input);
 
@@ -142,7 +152,6 @@ const createProductElement = (array) => {
     buyButton.addEventListener("click", () => {
       cart.push(item);
       console.log(cart);
-      addItemToCart(cart);
     });
 
     product.append(name, img, price, buyButton);
@@ -220,36 +229,115 @@ const clearFields = (event) => {
 
 }
 
+let bikesPrice = 0;
+let countBikes = 0;
 
-const addItemToCart = (array) => {
+const createCartElement = (array) => {
+  const table = document.createElement('table');
+
+  const tableHeader = 
+  `<tr class="table-element">
+    <th>Фото</th>
+    <th>Назва</th>
+    <th>Кількість</th>
+    <th>Ціна</th>
+    <th>Усього</th>
+  </tr>`;
+  const row1 = document.createElement('tr');
+  row1.classList.add("table-element");
+  table.append(row1);
+
   array.forEach(item => {
-    console.log("addItemToCart");
-
-    const table = document.createElement('table');
-
-    const row = document.createElement('tr');
+    const row2 = document.createElement('tr');
     const col1 = document.createElement('td');
     const col2 = document.createElement('td');
     const col3 = document.createElement('td');
     const col4 = document.createElement('td');
+    const col5 = document.createElement('td');
 
     const img = document.createElement('img');
 
-    img.src = item.imageUrl;
-    col1.innerHTML = img;
-    col2.innerText = item.name;
-    col3.innerText = item.price;
-    col4.innerText = item.price;
+    row2.classList.add("table-element");
 
-    row.append(col1, col2, col3, col4);
-    table.append(row);
+    img.src = item.imageUrl;
+    row1.innerHTML = tableHeader;
+    col2.innerText = item.name;
+    col3.innerText = 1;
+    col4.innerText = item.price;
+    col5.innerText = item.price * col3.textContent;
+
+    bikesPrice += +col5.textContent;
+    countBikes += +col3.innerText;
+
+    col1.appendChild(img);
+    row2.append(col1, col2, col3, col4, col5);
+    table.append(row2);
     cartTable.appendChild(table);
   });
+
+  countPrice(bikesPrice);
 }
 
-clearButton.addEventListener('click', (event) => clearFields(event));
-submitButton.addEventListener('click', (event) => filter(event));
-sortingSelect.addEventListener('change', sortItems);
+const deliveryPriceNP = 200; // йой, най буде
+let promocodes = new Map([
+  ['promo5',   5],
+  ['promo10', 10],
+  ['promo25',   25]
+]);
+
+const countPrice = (bPrice) => {
+  const bikesPrice = document.getElementById("bikesPrice");
+  const discount = document.getElementById("discount");
+  const deliveryPrice = document.getElementById("deliveryPrice");
+  const fullPrice = document.getElementById("fullPrice");
+  const promo = document.getElementById("promo");
+  const refresh = document.getElementById('refresh-button');
+
+  bikesPrice.innerHTML = bPrice;
+  discount.innerHTML = '-0%';
+  deliveryPrice.innerHTML = countBikes * deliveryPriceNP;
+
+  let discountValue = 0;
+  
+  refresh.addEventListener("click", (event) => {
+    event.preventDefault();
+    let input = promo.value;
+
+    promocodes.forEach( (value, key) => {
+      if (key == input) { 
+        discountValue = value;
+        discount.innerHTML = `-${discountValue}%`;
+      }
+      fullPrice.innerHTML = ( bPrice / 100 ) * ( 100 - discountValue ) + +deliveryPrice.innerText;
+    });
+  });
+  
+  fullPrice.innerHTML = bPrice + +deliveryPrice.innerText;
+}
+
+const setPostCompany = () => {
+  const novaPoshtaRadio = document.getElementById('novaPoshta');
+  const ukrPoshtaRadio = document.getElementById('ukrPoshta');
+  const selfDeliveryRadio = document.getElementById('selfDelivery');
+  const postCompanySpan = document.querySelectorAll('#post-company');
+  const refresh = document.getElementById('refresh-button');
+
+  refresh.addEventListener('change', () => {
+    if (selfDeliveryRadio.checked) {
+      postCompanySpan.innerHTML = 'Самовивіз';
+    }
+    else if (ukrPoshtaRadio.checked) {
+      postCompanySpan.innerHTML = 'Укрпошта';
+    }
+    else {
+      postCompanySpan.innerHTML = 'Нова пошта';
+    }
+  });
+
+}
+
+setPostCompany();
+createCartElement(cart);
 
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", () => {
@@ -277,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".go-top").addEventListener("click", () => {
     scrollToTop(800);
   });
-
+  
   function scrollToTop(duration) {
     let scrollStep = -window.scrollY / (duration / 15);
     let scrollInterval = setInterval(() => {
@@ -289,3 +377,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 15);
   }
 });
+
+// clearButton.addEventListener('click', (event) => clearFields(event));
+// submitButton.addEventListener('click', (event) => filter(event));
+// sortingSelect.addEventListener('change', sortItems);
+// readMoreButton.addEventListener('click', (event) => {
+//   event.preventDefault();
+//   content.scrollIntoView({ behavior: 'smooth' });
+// });

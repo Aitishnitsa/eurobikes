@@ -47,7 +47,7 @@ form {
   content: "";
   background: #2e452c;
   position: absolute;
-  opacity: 0.5;
+  opacity: 0.75;
   top: 0;
   left: 0;
   height: 100%;
@@ -630,6 +630,7 @@ footer {
 
 .form-group-input {
   display: inline-block;
+  width: 100%;
 }
 
 .form-input {
@@ -642,7 +643,7 @@ footer {
 }
 
 textarea.form-input {
-  height: 117px;
+  height: 25vh;
   width: 100%;
 }
 
@@ -880,13 +881,17 @@ th, td {
   padding: 10px 0px;
 }
 
-.cart-table>table {
+.cart-table>table, .cart-items>table {
   border: 1px solid #51804e;
   width: 100%;
 }
 
 .cart-table>table:last-of-type {
   border-top: none;
+}
+
+.cart-items>table>tr>td>img {
+  height: 10vh;
 }
 
 .table-element>td, .table-element>th {
@@ -989,6 +994,10 @@ th, td {
 
 .to-top .search-image, .to-top a, .to-top .dropbtn, .to-top .svg-lines {
   color: black;
+}
+
+.w100vh {
+  width: 100vh;
 }
 
 @media only screen and (max-width: 525px) {
