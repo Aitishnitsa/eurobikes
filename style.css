@@ -23,7 +23,7 @@ article {
   display: block;
 }
 
-option {
+option, .pagination {
   background-color: white;
 }
 
@@ -998,6 +998,40 @@ th, td {
 
 .w100vh {
   width: 100vh;
+}
+
+.p20 {
+  padding: 20px;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.no-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination .pagination-item {
+  align-items: center;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  margin: 0 10px;
+  font-weight: 700;
+}
+
+.current-page {
+  color: #51804e;
+}
+
+.svg-inline {
+  width: 0.5em;
+  overflow: visible;
 }
 
 @media only screen and (max-width: 525px) {

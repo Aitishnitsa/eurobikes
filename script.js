@@ -19,12 +19,20 @@ const cartTable = document.querySelector('.cart-items');
 const list = document.querySelector(".products-list");
 const category = document.querySelector('#category');
 const sortingSelect = document.querySelector('#sorting');
+const quantityPerPage = document.querySelector('#quantityPerPage');
 const submitButton = document.querySelector('#submit-btn');
 const clearButton = document.querySelector('#clear-btn');
 const content = document.querySelector("#content");
 
 const minPriceField = document.getElementById("minPrice");
 const maxPriceField = document.getElementById("maxPrice");
+
+const paginator = document.querySelector("#paginator");
+
+let bikesPerPage = 6;
+let presentPage = 1;
+let bikesPrice = 0;
+let countBikes = 0;
 
 let bikesArray = [];
 let filteredBikes = [];
@@ -75,10 +83,10 @@ const menuClose = () => {
   }
 }
 
-navToggleButton.addEventListener('click', ($event) => menuOpen($event));
-
 const searchItem = (input) => {
   let searchItems = bikesArray.filter(bike => bike.name.toLowerCase().includes(input.toLowerCase()));
+
+  filteredBikes = searchItems;
 
   list.innerHTML = "";
 
@@ -86,7 +94,10 @@ const searchItem = (input) => {
     list.innerHTML = "Не знайдено товарів за вашим пошуковим запитом :(";
   }
 
-  createProductElement(searchItems);
+  presentPage = 1;
+  renderPaginator(filteredBikes.length);
+  createProductElement(getBikesByPage(presentPage));
+
   productsContainer.scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -118,9 +129,6 @@ const outsideClickSearchBarClose = ($event) => {
     searchBar?.classList.remove('opened');
   }
 }
-
-document.addEventListener('click', ($event) => outsideClickSearchBarClose($event));
-
 
 const createProductElement = (array) => {
   array.forEach(item => {
@@ -159,26 +167,40 @@ const createProductElement = (array) => {
   });
 }
 
-fetch('./bikes.json')
-  .then(response => response.json())
+// fetch('./bikes.json')
+//   .then(response => response.json())
+//   .then(json => {
+//     bikesArray = json;
+//     filteredBikes = bikesArray;
+//     createProductElement(filteredBikes);
+//   });
+
+  fetch('./bikes.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
   .then(json => {
     bikesArray = json;
     filteredBikes = bikesArray;
-    createProductElement(filteredBikes);
+    renderPaginator(filteredBikes.length);
+    createProductElement(getBikesByPage(1));
   });
 
 const sortItems = () => {
   if (sortingSelect.value === "2") {
-    console.log("2");
     filteredBikes.sort((a, b) => a.price - b.price);
   } else if (sortingSelect.value === "3") {
-    console.log("3");
     filteredBikes.sort((b, a) => a.price - b.price);
   }
 
   list.innerHTML = "";
 
-  createProductElement(filteredBikes);
+  presentPage = 1;
+  renderPaginator(filteredBikes.length);
+  createProductElement(getBikesByPage(presentPage));
 }
 
 const autoSelectCategory = (value, event) => {
@@ -211,10 +233,12 @@ const filter = (event) => {
 
   if (filteredBikes.length === 0) { 
     list.innerHTML = "Не знайдено товарів за вашими критеріями :(";
+    renderPaginator(0); 
     return;
   }
-
-  createProductElement(filteredBikes);
+  
+  renderPaginator(filteredBikes.length); 
+  createProductElement(getBikesByPage(1)); 
   sortItems();
 };
 
@@ -229,8 +253,35 @@ const clearFields = (event) => {
 
 }
 
-let bikesPrice = 0;
-let countBikes = 0;
+const getBikesByPage = (page) => {
+  bikesPerPage = quantityPerPage.value;
+  const data = filteredBikes.length ? filteredBikes : bikesArray;
+  startIndex = (page - 1) * bikesPerPage;
+  return data.slice(startIndex, startIndex + bikesPerPage);
+}
+
+const renderPaginator = (amount) => {
+  bikesPerPage = quantityPerPage.value;
+  const numberOfPages = Math.ceil(amount / bikesPerPage);
+  let rawHTML = "";
+  
+  for (let i = 1; i <= numberOfPages; i++) {
+    rawHTML += `<li><a class="pagination-item" href="#" data-page="${i}">${i}</a></li>`;
+  }
+  
+  paginator.innerHTML = rawHTML;
+}
+
+const refreshBikesListPerPage = (event) => {
+  event.preventDefault();
+
+  list.innerHTML = "";
+
+  if (event.target.tagName !== "A") { return; }
+
+  presentPage = event.target.dataset.page;
+  createProductElement(getBikesByPage(presentPage));
+}
 
 const createCartElement = (array) => {
   const table = document.createElement('table');
@@ -336,9 +387,6 @@ const setPostCompany = () => {
 
 }
 
-setPostCompany();
-createCartElement(cart);
-
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", () => {
     const top = document.querySelector(".go-top");
@@ -378,10 +426,32 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// clearButton.addEventListener('click', (event) => clearFields(event));
-// submitButton.addEventListener('click', (event) => filter(event));
-// sortingSelect.addEventListener('change', sortItems);
-// readMoreButton.addEventListener('click', (event) => {
-//   event.preventDefault();
-//   content.scrollIntoView({ behavior: 'smooth' });
-// });
+document.addEventListener('click', ($event) => outsideClickSearchBarClose($event));
+
+navToggleButton.addEventListener('click', ($event) => menuOpen($event));
+
+paginator.addEventListener("click", (event) => { refreshBikesListPerPage(event) });
+
+clearButton.addEventListener('click', (event) => clearFields(event));
+
+submitButton.addEventListener('click', (event) => { 
+  filter(event); 
+  renderPaginator(filteredBikes.length); 
+  refreshBikesListPerPage(event);
+  createProductElement(getBikesByPage(1)); 
+});
+
+sortingSelect.addEventListener('change', sortItems);
+quantityPerPage.addEventListener('change', (event) => {
+  renderPaginator(filteredBikes.length); 
+  refreshBikesListPerPage(event);
+  createProductElement(getBikesByPage(1)); 
+});
+
+readMoreButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  content.scrollIntoView({ behavior: 'smooth' });
+});
+
+// setPostCompany();
+// createCartElement(cart);
