@@ -6,6 +6,7 @@ body {
   margin: 0px;
   font-family: "Roboto Flex", sans-serif;
   font-size: 16px;
+  background-image: url(./images/background.png);
   background-color: #354e36;
 }
 
@@ -292,6 +293,11 @@ form {
   width: 100%;
 }
 
+.row-info>img {
+  height: 35vh;
+  margin: 0 48px 0 0;
+}
+
 .middle-info {
   padding-left: 25px;
   border-left: 1px solid #e9e9e9;
@@ -325,7 +331,7 @@ form {
   transition: all 0.2s ease-out;
 }
 
-.article-hover, .sidebar-content a:hover {
+.article-hover, .pagination-item:hover, .sidebar-content a:hover {
   background-color: #51804e45;
   border-radius: 25px;
 }
@@ -436,7 +442,7 @@ form {
   padding: 2rem;
 }
 
-.page-header2, .input-group{
+.page-header2, .input-group {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -451,6 +457,7 @@ form {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 1rem;
+  margin: 0 0 20px 0;
 }
 
 .breweries>ul>li {
@@ -515,9 +522,10 @@ form {
   font-size: 20px;
 }
 
-.logo {
+.logo, .al-centre {
   display: flex;
   align-items: center;
+  flex-direction: row;
 }
 
 .logo img {
@@ -612,12 +620,6 @@ footer {
   justify-content: center;
   align-items: center;
   background-color: white;
-}
-
-.contact-form {
-  background-color: #51804e94;
-  padding: 20px;
-  border-radius: 5px;
 }
 
 .form-fields {
@@ -1021,8 +1023,9 @@ th, td {
   display: flex;
   height: 30px;
   justify-content: center;
-  margin: 0 10px;
+  padding: 0 10px;
   font-weight: 700;
+  transition: all 0.2s ease-out;
 }
 
 .current-page {
@@ -1096,6 +1099,14 @@ th, td {
 
   .row-info {
     padding: 0 10px;
+  }
+
+  .al-centre {
+    flex-direction: column;
+  }
+
+  .row-info>img {
+    margin: 0;
   }
 
   .article-header {

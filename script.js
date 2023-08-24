@@ -29,14 +29,14 @@ const maxPriceField = document.getElementById("maxPrice");
 
 const paginator = document.querySelector("#paginator");
 
-let bikesPerPage = 6;
+let bikesPerPage = parseInt(quantityPerPage.value);
 let presentPage = 1;
 let bikesPrice = 0;
 let countBikes = 0;
 
 let bikesArray = [];
 let filteredBikes = [];
-let cart = [ 
+let cart = [
   {
     id: 0,
     imageUrl: "https://eurobikes.com.ua/components/com_jshopping/files/img_products/thumb_IMG_20230719_200919.jpg",
@@ -90,8 +90,10 @@ const searchItem = (input) => {
 
   list.innerHTML = "";
 
-  if (searchItems.length === 0) { 
+  if (searchItems.length === 0) {
     list.innerHTML = "Не знайдено товарів за вашим пошуковим запитом :(";
+    renderPaginator(0);
+    return;
   }
 
   presentPage = 1;
@@ -108,13 +110,13 @@ searchImg.addEventListener('click', () => {
 
   searchItem(input);
 
-  searchBar.value = ''; 
+  searchBar.value = '';
 });
 
 searchBar.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
-    event.preventDefault(); 
-    searchImg.click(); 
+    event.preventDefault();
+    searchImg.click();
   }
 });
 
@@ -175,7 +177,7 @@ const createProductElement = (array) => {
 //     createProductElement(filteredBikes);
 //   });
 
-  fetch('./bikes.json')
+fetch('./bikes.json')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -208,7 +210,7 @@ const autoSelectCategory = (value, event) => {
 
   category.value = value;
   filter(event);
-  
+
   productsContainer.scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -231,14 +233,14 @@ const filter = (event) => {
 
   list.innerHTML = "";
 
-  if (filteredBikes.length === 0) { 
+  if (filteredBikes.length === 0) {
     list.innerHTML = "Не знайдено товарів за вашими критеріями :(";
-    renderPaginator(0); 
+    renderPaginator(0);
     return;
   }
   
-  renderPaginator(filteredBikes.length); 
-  createProductElement(getBikesByPage(1)); 
+  renderPaginator(filteredBikes.length);
+  createProductElement(getBikesByPage(1));
   sortItems();
 };
 
@@ -254,40 +256,51 @@ const clearFields = (event) => {
 }
 
 const getBikesByPage = (page) => {
-  bikesPerPage = quantityPerPage.value;
   const data = filteredBikes.length ? filteredBikes : bikesArray;
-  startIndex = (page - 1) * bikesPerPage;
+  const startIndex = (page - 1) * bikesPerPage; 
   return data.slice(startIndex, startIndex + bikesPerPage);
 }
 
 const renderPaginator = (amount) => {
-  bikesPerPage = quantityPerPage.value;
   const numberOfPages = Math.ceil(amount / bikesPerPage);
   let rawHTML = "";
-  
+
   for (let i = 1; i <= numberOfPages; i++) {
-    rawHTML += `<li><a class="pagination-item" href="#" data-page="${i}">${i}</a></li>`;
+    if (i === 1) { rawHTML += `<li><a class="pagination-item current-page" href="#products-container" data-page="${i}">${i}</a></li>`; }
+    else { rawHTML += `<li><a class="pagination-item" href="#products-container" data-page="${i}">${i}</a></li>`; }
   }
-  
+
   paginator.innerHTML = rawHTML;
 }
 
 const refreshBikesListPerPage = (event) => {
-  event.preventDefault();
+  // event.preventDefault();
 
   list.innerHTML = "";
-
+  
   if (event.target.tagName !== "A") { return; }
+  
+  const clickedPage = parseInt(event.target.dataset.page); 
 
-  presentPage = event.target.dataset.page;
+  presentPage = clickedPage;
   createProductElement(getBikesByPage(presentPage));
+  
+  const paginationItems = paginator.querySelectorAll(".pagination-item");
+  paginationItems.forEach(item => {
+    const pageNumber = parseInt(item.dataset.page);
+    if (pageNumber === clickedPage) {
+      item.classList.add("current-page");
+    } else {
+      item.classList.remove("current-page");
+    }
+  });
 }
 
 const createCartElement = (array) => {
   const table = document.createElement('table');
 
-  const tableHeader = 
-  `<tr class="table-element">
+  const tableHeader =
+    `<tr class="table-element">
     <th>Фото</th>
     <th>Назва</th>
     <th>Кількість</th>
@@ -331,9 +344,9 @@ const createCartElement = (array) => {
 
 const deliveryPriceNP = 200; // йой, най буде
 let promocodes = new Map([
-  ['promo5',   5],
+  ['promo5', 5],
   ['promo10', 10],
-  ['promo25',   25]
+  ['promo25', 25]
 ]);
 
 const countPrice = (bPrice) => {
@@ -349,20 +362,20 @@ const countPrice = (bPrice) => {
   deliveryPrice.innerHTML = countBikes * deliveryPriceNP;
 
   let discountValue = 0;
-  
+
   refresh.addEventListener("click", (event) => {
     event.preventDefault();
     let input = promo.value;
 
-    promocodes.forEach( (value, key) => {
-      if (key == input) { 
+    promocodes.forEach((value, key) => {
+      if (key == input) {
         discountValue = value;
         discount.innerHTML = `-${discountValue}%`;
       }
-      fullPrice.innerHTML = ( bPrice / 100 ) * ( 100 - discountValue ) + +deliveryPrice.innerText;
+      fullPrice.innerHTML = (bPrice / 100) * (100 - discountValue) + +deliveryPrice.innerText;
     });
   });
-  
+
   fullPrice.innerHTML = bPrice + +deliveryPrice.innerText;
 }
 
@@ -413,7 +426,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".go-top").addEventListener("click", () => {
     scrollToTop(800);
   });
-  
+
   function scrollToTop(duration) {
     let scrollStep = -window.scrollY / (duration / 15);
     let scrollInterval = setInterval(() => {
@@ -430,22 +443,26 @@ document.addEventListener('click', ($event) => outsideClickSearchBarClose($event
 
 navToggleButton.addEventListener('click', ($event) => menuOpen($event));
 
-paginator.addEventListener("click", (event) => { refreshBikesListPerPage(event) });
+paginator.addEventListener("click", (event) => refreshBikesListPerPage(event));
 
-clearButton.addEventListener('click', (event) => clearFields(event));
+clearButton.addEventListener('click', (event) => {
+  clearFields(event);
+  submitButton.click();
+});
 
-submitButton.addEventListener('click', (event) => { 
-  filter(event); 
-  renderPaginator(filteredBikes.length); 
+submitButton.addEventListener('click', (event) => {
+  filter(event);
+  renderPaginator(filteredBikes.length);
   refreshBikesListPerPage(event);
-  createProductElement(getBikesByPage(1)); 
+  createProductElement(getBikesByPage(1));
 });
 
 sortingSelect.addEventListener('change', sortItems);
 quantityPerPage.addEventListener('change', (event) => {
-  renderPaginator(filteredBikes.length); 
+  bikesPerPage = parseInt(event.target.value);
+  renderPaginator(filteredBikes.length);
   refreshBikesListPerPage(event);
-  createProductElement(getBikesByPage(1)); 
+  createProductElement(getBikesByPage(1));
 });
 
 readMoreButton.addEventListener('click', (event) => {
